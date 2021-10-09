@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { Container, Carousel, Navbar, Nav } from "react-bootstrap";
-import { ReactComponent as BGImg } from "../lo.svg";
-
+import { Container, Carousel, Navbar, Nav, Card, Placeholder } from "react-bootstrap";
+// import { ReactComponent as BGImg} from "../images";
+import images from "../images";
+import { render } from '@testing-library/react';
 const Landing = () => {
+    render()
     return (
         <>
             <Navbar bg="dark" variant="dark">
@@ -22,15 +24,21 @@ const Landing = () => {
                     <div className="row">
                         <div className="col-md-6 col-12 h100 d-flex flex-column justify-content-center align-items-center">
                             {/* <BGImg width={"90%"} /> */}
-                            <Carousel variant="dark">
-                                <Carousel.Item interval={1000}>
-                                    <BGImg width={"90%"} />
+                            <Carousel fade variant="dark">
+                                <Carousel.Item interval={3000}>
+                                    <img src={images.a} margin={"auto"} height={"500px"} width={"900px"} alt="Hpic" />
                                 </Carousel.Item>
-                                <Carousel.Item interval={500}>
-                                    <BGImg width={"90%"} />
+                                <Carousel.Item interval={3000}>
+                                    <img src={images.b} margin={"auto"} height={"500px"} width={"900px"} alt="Hpic" />
                                 </Carousel.Item>
-                                <Carousel.Item>
-                                    <BGImg width={"90%"} />
+                                <Carousel.Item interval={3000}>
+                                    <img src={images.c} margin={"auto"} height={"500px"} width={"900px"} alt="Hpic" />
+                                </Carousel.Item>
+                                <Carousel.Item interval={3000}>
+                                    <img src={images.d} margin={"auto"} height={"500px"} width={"900px"} alt="Hpic" />
+                                </Carousel.Item>
+                                <Carousel.Item interval={3000}>
+                                    <img src={images.e} margin={"auto"} height={"500px"} width={"900px"} alt="Hpic" />
                                 </Carousel.Item>
                             </Carousel>
                         </div>
@@ -47,9 +55,26 @@ const Landing = () => {
                                 Login
                             </Link>
                         </div>
+                        <div style={{padding: '20px'}}>
+                        <Card style={{ width: '18rem'}}>
+                            <Card.Img variant="top" src="holder.js/100px180" />
+                            <Card.Body>
+                                <Placeholder as={Card.Title} animation="glow">
+                                    <Placeholder xs={6} />
+                                </Placeholder>
+                                <Placeholder as={Card.Text} animation="glow">
+                                    <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
+                                    <Placeholder xs={6} /> <Placeholder xs={8} />
+                                </Placeholder>
+                                <Placeholder.Button variant="primary" xs={6} />
+                            </Card.Body>
+                        </Card>
+                        </div>
+                        
                     </div>
                 </div>
-            </Container>
+            
+        </Container>
         </>
     );
 }
