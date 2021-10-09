@@ -2,14 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { StyledEngineProvider } from '@mui/material/styles';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <StyledEngineProvider injectFirst>
     <App />
     {/* <Login/> */}
-  </React.StrictMode>,
+  </StyledEngineProvider>,
+  document.querySelector("#root"),
   document.getElementById('root')
 );
 

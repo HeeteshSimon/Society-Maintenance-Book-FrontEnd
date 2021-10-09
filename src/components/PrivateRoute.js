@@ -12,7 +12,7 @@ export default function PrivateRoute({ component: Component, ...rest }) {
             render={(props) => {
                 return currentUser ? (
                     <>
-                        {/* <IdleTimerContainer /> */}
+                         {/* <IdleTimerContainer />  */}
                         <NavbarComponent />
                         <Container fluid >
                             <Component {...props} />
