@@ -82,7 +82,7 @@ const ValidatedLoginForm = () => {
                             onBlur={handleBlur}
                             className={errors.password && touched.password && "error"}
                         />
-                        <div style={{paddingTop:'20px',}}> 
+                        <div style={{paddingTop:'20px'}}> 
                         <PasswordStrengthMeter password={values.password} />
                         </div>
                         {errors.password && touched.password && (
