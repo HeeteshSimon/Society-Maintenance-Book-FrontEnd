@@ -40,7 +40,8 @@ export default function UserDetails(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   useEffect(() => {
-    axios.get('http://20.204.87.58:8080/sqlartifact/getRecords?flatNumber=102&type=monthly')
+    const flatNumber = localStorage.getItem('flatNumber')
+    axios.get(`http://20.204.87.58:8080/sqlartifact/getRecords?flatNumber=${flatNumber}&type=monthly`)
       .then((response) => {
         console.log(response.data)
         console.log(response.data.records)
@@ -52,7 +53,7 @@ export default function UserDetails(props) {
         console.log(error);
       });
 
-    axios.get('http://20.204.87.58:8080/sqlartifact/getRecords?flatNumber=102&type=yearly')
+    axios.get(`http://20.204.87.58:8080/sqlartifact/getRecords?flatNumber=${flatNumber}&type=yearly`)
       .then((response) => {
         console.log(response.data)
         console.log(response.data.records)

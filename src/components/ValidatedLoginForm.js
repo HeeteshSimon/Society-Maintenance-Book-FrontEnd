@@ -6,10 +6,32 @@ import { useHistory } from 'react-router';
 import "../ValidatedLoginForm.css"
 import { Button, Form } from "react-bootstrap";
 import Particles from "react-tsparticles";
+import axios from "axios";
 import PasswordStrengthBar from 'react-password-strength-bar';
 const ValidatedLoginForm = () => {
     // const [password, setPassword] = useState('');
+    const onSubmit = (values) => {
+        axios.get(`http://20.204.87.58:8080/sqlartifact/login?username=${encodeURIComponent(values.Username)}&password=${encodeURIComponent(values.password)}`)
+        .then(response => {
+            console.log('login',response.data)
+           if (response.data.role !== "") {
+               
+               localStorage.setItem('role', response.data.role);
+               localStorage.setItem('flatNumber', response.data.flatNumber);
+               if (response.data.role === 'admin'){
+    
+                   history.push("/MaintenanceRecords")
+               }
+               else{
+                   history.push("/UserDetails");
+               }
+           }
+           else {
+               alert('USername or Password Incorrect')
+           }
+        })
 
+    }
     let history = useHistory();
     return (
         <Formik
@@ -17,9 +39,7 @@ const ValidatedLoginForm = () => {
             onSubmit={(values, { setSubmitting }) => {
                 console.log("Submitting");
                 console.log(values);
-                localStorage.setItem("user", "anurag");
-                localStorage.setItem("isLoggedIn", true);
-                history.push("/dashboard");
+                onSubmit(values)
             }}
 
             validationSchema={Yup.object().shape({
@@ -54,7 +74,7 @@ const ValidatedLoginForm = () => {
                     isSubmitting,
                     handleChange,
                     handleBlur,
-                    handleSubmit
+                    handleSubmit,
                 } = props;
                 return (
                     <div style={{ padding: '0.5px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
