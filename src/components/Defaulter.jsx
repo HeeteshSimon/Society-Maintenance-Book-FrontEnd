@@ -4,7 +4,7 @@ import { Table} from 'react-bootstrap';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 // import IdleTimerContainer from './IdealTimer';
 
-export default function DisplayTable(props) {
+export default function Defaulter(props) {
   const loc = window.location;
 
     const [fname, setFname] = useState([]);
