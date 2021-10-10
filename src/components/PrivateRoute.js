@@ -123,7 +123,7 @@ export default function PrivateRoute({ component: Component, name, ...rest }) {
                                              right: 5,
                                              top: 10,
                                                      }} >                              
-                                            <Button variant="contained" endIcon={<LogoutIcon />} size="large" href="#contained-buttons" >
+                                            <Button variant="contained" endIcon={<LogoutIcon />} size="large" href="/" >
                                                 LogOut
                                             </Button>
                                         </div>
@@ -149,43 +149,43 @@ export default function PrivateRoute({ component: Component, name, ...rest }) {
                                     </DrawerHeader>
                                     <Divider />
                                     <List>
-                                        <ListItem component={Link} href="/Dasboard" button key='Dashboard'>
+                                        <ListItem component={Link} to="/Dasboard" button key='Dashboard'>
                                             <ListItemIcon>
                                                 <InboxIcon />
                                             </ListItemIcon>
                                             <ListItemText primary={"Dashboard"} />
                                         </ListItem>
-                                        <ListItem component={Link} href="/UserDetails" button key='User Details'>
+                                        <ListItem component={Link} to="/UserDetails" button key='User Details'>
                                             <ListItemIcon>
                                                 <InboxIcon />
                                             </ListItemIcon>
                                             <ListItemText primary='User Details' />
                                         </ListItem>
-                                        <ListItem component={Link} href="/Defaulter" button key='Defaulter'>
+                                        <ListItem component={Link} to="/Defaulter" button key='Defaulter'>
                                             <ListItemIcon>
                                                 <InboxIcon />
                                             </ListItemIcon>
                                             <ListItemText primary='Defaulter' />
                                         </ListItem>
-                                        <ListItem component={Link} href="/ExpenseRecords" button key='ExpenseRecords'>
+                                        <ListItem component={Link} to="/ExpenseRecords" button key='ExpenseRecords'>
                                             <ListItemIcon>
                                                 <InboxIcon />
                                             </ListItemIcon>
                                             <ListItemText primary='ExpenseRecords' />
                                         </ListItem>
-                                        <ListItem component={Link} href="/MaintenanceRecords" button key='MaintenanceRecords'>
+                                        <ListItem component={Link} to="/MaintenanceRecords" button key='MaintenanceRecords'>
                                             <ListItemIcon>
                                                 <InboxIcon />
                                             </ListItemIcon>
                                             <ListItemText primary='MaintenanceRecords' />
                                         </ListItem>
-                                        <ListItem component={Link} href="/SocietyRecords" button key='SocietyRecords'>
+                                        <ListItem component={Link} to="/SocietyRecords" button key='SocietyRecords'>
                                             <ListItemText primary='SocietyRecords' />
                                         </ListItem>
-                                        <ListItem component={Link} href="/PersonalDetails" button key='PersonalDetails'>
+                                        <ListItem component={Link} to="/PersonalDetails" button key='PersonalDetails'>
                                             <ListItemText primary='PersonalDetails' />
                                         </ListItem>
-                                        <ListItem component={Link} href="/PersonalDetails" button key='PersonalDetails'>
+                                        <ListItem component={Link} to="/PersonalDetails" button key='PersonalDetails'>
                                             <ListItemText primary='PersonalDetails' />
                                         </ListItem>
                                         <ListItem onclick={handlelogout} button key='PersonalDetails'>
