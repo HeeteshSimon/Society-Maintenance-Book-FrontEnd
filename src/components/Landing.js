@@ -4,12 +4,14 @@ import { Container, Carousel, Navbar, Nav, Card, Placeholder } from "react-boots
 // import { ReactComponent as BGImg} from "../images";
 import images from "../images";
 import { render } from '@testing-library/react';
-import { Alert } from '@coreui/react';
+// import { Alert } from '@coreui/react';
+
 
 const Landing = () => {
     render()
     return (
         <>
+
             <Navbar bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand href="#home">Navbar</Navbar.Brand>
@@ -28,19 +30,19 @@ const Landing = () => {
                             {/* <BGImg width={"90%"} /> */}
                             <Carousel fade variant="dark">
                                 <Carousel.Item interval={3000}>
-                                    <img src={images.a} margin={"auto"} height={"auto"} width={"100%"} object-fit={"cover"}  alt="Hpic" />
+                                    <img src={images.a} margin={"auto"} height={"auto"} width={"100%"}  alt="Hpic" />
                                 </Carousel.Item>
                                 <Carousel.Item interval={3000}>
-                                    <img src={images.b} margin={"auto"} height={"auto"} width={"100%"} object-fit={"cover"}  alt="Hpic" />
+                                    <img src={images.b} margin={"auto"} height={"auto"} width={"100%"}  alt="Hpic" />
                                 </Carousel.Item>
                                 <Carousel.Item interval={3000}>
-                                    <img src={images.c} margin={"auto"} height={"auto"} width={"100%"} object-fit={"cover"}  alt="Hpic" />
+                                    <img src={images.c} margin={"auto"} height={"auto"} width={"100%"}  alt="Hpic" />
                                 </Carousel.Item>
                                 <Carousel.Item interval={3000}>
-                                    <img src={images.d} margin={"auto"} height={"auto"} width={"100%"} object-fit={"cover"}  alt="Hpic" />
+                                    <img src={images.d} margin={"auto"} height={"auto"} width={"100%"}  alt="Hpic" />
                                 </Carousel.Item>
                                 <Carousel.Item interval={3000}>
-                                    <img src={images.e} margin={"auto"} height={"auto"} width={"100%"} object-fit={"cover"}  alt="Hpic" />
+                                    <img src={images.e} margin={"auto"} height={"auto"} width={"100%"}  alt="Hpic" />
                                 </Carousel.Item>
                             </Carousel>
                         </div>

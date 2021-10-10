@@ -8,15 +8,17 @@ import Dashboard from './components/Dashboard';
 import TableComp from './components/Table';
 import PrivateRoute from './components/PrivateRoute';
 import ValidatedLoginForm from './components/ValidatedLoginForm';
+import PersistentDrawerLeft from'./components/demo';
 
 function App() {
   return (
     <>
+    
       <BrowserRouter>
         <Switch>
           <Route path="/" exact component={Landing} />
           <Route path="/login" exact component={ValidatedLoginForm} />
-          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <PrivateRoute exact path="/dashboard" component={PersistentDrawerLeft} />
           <PrivateRoute exact path="/table" component={TableComp} />
         </Switch>
       </BrowserRouter>

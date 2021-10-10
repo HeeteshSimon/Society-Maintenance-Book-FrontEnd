@@ -11,7 +11,6 @@ ReactDOM.render(
     <App />
     {/* <Login/> */}
   </StyledEngineProvider>,
-  document.querySelector("#root"),
   document.getElementById('root')
 );
 

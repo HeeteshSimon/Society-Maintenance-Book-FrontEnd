@@ -9,6 +9,8 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { Link } from 'react-router-dom';
+// import Sidebar from './Sidebar'
+
 // import styled from '@emotion/styled'
 
 const Dashboard = () => {
@@ -21,7 +23,7 @@ const Dashboard = () => {
         }
 
 
-
+{/* <Sidebar/> */}
 
 const columns = [
   { id: 'name', label: 'Name', minWidth: 170 },
@@ -86,7 +88,9 @@ export default function StickyHeadTable() {
   };
 
   return (
-    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+    <div>
+    {/* <Sidebar/> */}
+    <Paper sx={{ width: '95%', margin: "5%"}}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -134,5 +138,7 @@ export default function StickyHeadTable() {
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </Paper>
+    </div>
   );
+  
 }
