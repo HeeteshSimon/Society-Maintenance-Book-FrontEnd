@@ -124,22 +124,10 @@ export default function ExpenseRecords(props) {
     return (
       <div style={{marginTop: '0.01%'}}>
         {/* <IdleTimerContainer></IdleTimerContainer> */}
-        <Navbar bg="dark" variant="dark">
-<Container>
-<Nav className="me-auto">
- {/* <Nav.Link href="/users" active={loc.pathname === '/users'}>Society Records</Nav.Link> */}
- <Nav.Link href="/records" active={loc.pathname === '/records'}>Records</Nav.Link>
- <Nav.Link href="/defaulter" active={loc.pathname === '/defaulter'}>Defaulter</Nav.Link>
- <Nav.Link href="/pusers"  active={loc.pathname==='/pusers'}>Users</Nav.Link>
- <Nav.Link href="/adminrecords"  active={loc.pathname==='/adminrecords'}>Society Records(A)</Nav.Link>
- {/* <Nav.Link href="/userRecords"  active={loc.pathname==='/userRecords'}>My Records</Nav.Link> */}
-</Nav>
-</Container>
-</Navbar>
                 <Button className="float-right" style={{marginTop: "3.5%"}} variant="primary" onClick={() => { setAddShow(true) }}>Add</Button>
-    {/* <AddAdminRecords AddShow={AddShow} setAddShow={setAddShow} />   */}
-          <Button variant="warning" onClick={(e)=>setModeMonthly(true)}>Monthly</Button>
-          <Button variant="warning" onClick={(e)=>setModeMonthly(false)}>Yearly</Button>
+    {/* <AddAdminRecords AddShow={AddShow} setAddShow={setAddShow} />   */}{' '}
+          <Button variant="warning"  style= {{marginTop: "3.5%"}}  onClick={(e)=>setModeMonthly(true)}>Monthly</Button>{' '}
+          <Button variant="warning"  style= {{marginTop: "3.5%"}}   onClick={(e)=>setModeMonthly(false)}>Yearly</Button>{' '}
       
 
      { modeMonthly ? ( 

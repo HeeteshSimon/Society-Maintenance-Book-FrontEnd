@@ -12,7 +12,7 @@ const Landing = () => {
     return (
         <>
 
-            <Navbar bg="dark" variant="dark" >
+            {/* <Navbar bg="dark" variant="dark" >
                 <Container>
                     <Navbar.Brand href="#home">Navbar</Navbar.Brand>
                     <Nav className="me-auto">
@@ -21,7 +21,7 @@ const Landing = () => {
                         <Nav.Link href="#pricing">Pricing</Nav.Link>
                     </Nav>
                 </Container>
-            </Navbar>
+            </Navbar> */}
             <Container fluid>
 
                 <div className="main ">

@@ -134,11 +134,9 @@ export default function UserDetails(props) {
     }
     
     return (
-      <div style={{marginTop: '0.01%'}}>
-        {/* <IdleTimerContainer></IdleTimerContainer> */}
-        
-                 
-          <Button variant="warning" onClick={(e)=>setModeMonthly(true)}>Monthly</Button>
+      <div style={{marginTop: '0.01%' }}>
+        {/* <IdleTimerContainer></IdleTimerContainer> */}                
+          <Button variant="warning" onClick={(e)=>setModeMonthly(true)}>Monthly</Button>{" "}
           <Button variant="warning" onClick={(e)=>setModeMonthly(false)}>Yearly</Button>
       
 

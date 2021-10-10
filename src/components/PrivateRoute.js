@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import { Redirect, Route } from 'react-router';
-import { useHistory } from 'react-router';
+import { Redirect, Route } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 // import IdleTimerContainer from '../IdealTime';
 // import ButtonUnstyled, { buttonUnstyledClasses } from '@mui/core/ButtonUnstyled';
 // import { styled } from '@mui/system';
@@ -149,7 +149,7 @@ export default function PrivateRoute({ component: Component, name, ...rest }) {
                                     </DrawerHeader>
                                     <Divider />
                                     <List>
-                                        <ListItem component={Link} to="/Dasboard" button key='Dashboard'>
+                                        <ListItem component={Link} to="/Dashboard" button key='Dashboard'>
                                             <ListItemIcon>
                                                 <InboxIcon />
                                             </ListItemIcon>
