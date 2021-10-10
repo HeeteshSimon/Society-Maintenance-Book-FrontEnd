@@ -3,7 +3,7 @@ import { Table, Button, Modal, Form, Alert } from 'react-bootstrap';
 // import axios from 'axios';
 // import AddUser from './AddUser';
 // import { Navbar, Nav, Container } from 'react-bootstrap';
-// import IdleTimerContainer from './IdealTimer';
+import IdleTimerContainer from '../IdealTime';
 
 export default function PersonalDetails() {
   const loc = window.location;
@@ -83,9 +83,10 @@ export default function PersonalDetails() {
 
   }
   return (
+    <>
+    <IdleTimerContainer></IdleTimerContainer>
 
     <div style={{ marginTop: '0.01%', padding: '20px' }}>
-      {/* <IdleTimerContainer></IdleTimerContainer> */}
       <div style={{ marginTop: '2%' }}></div>
       <Button variant="primary" onClick={() => { setAddShow(true) }}>Add</Button>
       {/* <AddUser AddShow={AddShow} setAddShow={setAddShow} />   */}
@@ -167,6 +168,7 @@ export default function PersonalDetails() {
       </Modal>
 
     </div>
+    </>
   )
 }
 

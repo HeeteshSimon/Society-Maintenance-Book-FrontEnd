@@ -1,5 +1,6 @@
 import './App.css';
 import React from 'react';
+// import logo from './logo.svg';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Landing from './components/Landing';
 import Dashboard from './components/Dashboard';
@@ -13,15 +14,16 @@ import ExpenseRecords from './components/ExpenseRecords';
 import MaintenanceRecords from './components/MaintenanceRecords';
 import SocietyRecords from './components/SocietyRecords';
 import PersonalDetails from './components/PersonalDetails';
-import Table from './components/Table'
-
+import Table from './components/Table';
+import NLanding from './views/NLanding';
+import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <>
       <BrowserRouter>
 
         <Switch>
-          <Route path="/" exact component={Landing} />
+          <Route path="/" exact component={NLanding} />
           <Route path="/login" component={ValidatedLoginForm} />
           <PrivateRoute path="/userdetails" exact component={UserDetails} name='User Details' />
           <PrivateRoute path="/Defaulter" exact component={Defaulter} name='Defaulter' />

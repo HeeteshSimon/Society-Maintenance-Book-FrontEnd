@@ -5,6 +5,7 @@ import PasswordStrengthMeter from './PasswordStrengthMeter';
 import { useHistory } from 'react-router';
 import "../ValidatedLoginForm.css"
 import { Button, Form } from "react-bootstrap";
+import Particles from "react-tsparticles";
 import PasswordStrengthBar from 'react-password-strength-bar';
 const ValidatedLoginForm = () => {
     // const [password, setPassword] = useState('');
@@ -27,8 +28,8 @@ const ValidatedLoginForm = () => {
                     .min(5)
                     .max(12)
                     .matches(
-                        /^[aA-zZ._\s]+$/,
-                        "Only alphabets and '.' '_' are allowed for this field "
+                        /^[aA-zZ._0-9\s]+$/,
+                        "Only alphanumberic chars and '.' '_' are allowed for this field "
                     ),
 
                 password: Yup.string()

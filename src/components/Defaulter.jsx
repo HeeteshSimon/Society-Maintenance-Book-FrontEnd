@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap';
 // import axios from 'axios';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-// import IdleTimerContainer from './IdealTimer';
+import IdleTimerContainer from '../IdealTime';
 
 export default function Defaulter(props) {
     const loc = window.location;
@@ -44,7 +44,7 @@ export default function Defaulter(props) {
 
     return (
         <div style={{ marginTop: '0.01%' }}>
-            {/* <IdleTimerContainer></IdleTimerContainer> */}
+            <IdleTimerContainer></IdleTimerContainer>
             <div style={{ marginTop: '2%' }}></div>
             <Table striped bordered hover>
                 <thead>

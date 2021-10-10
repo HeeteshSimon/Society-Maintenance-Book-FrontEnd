@@ -12,7 +12,17 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.startbtn{
+  background-color: #372F7F;
+  color: wheat !important;
+  margin-left: 0;
+  font-weight: 600;
+}
+.startbtn:hover{
+    color: #fff !important;
+    background-color: #23272b !important;
+    border-color: #1d2124 !important;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -32,7 +42,6 @@
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }
