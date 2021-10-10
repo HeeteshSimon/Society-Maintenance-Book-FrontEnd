@@ -1,10 +1,11 @@
-//import axios from 'axios';
+
+import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import { Table, Button, Modal, Form, Alert } from 'react-bootstrap';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import IdleTimerContainer from './IdealTimer'
-//visible to user. Its their payment details to society
-export default function UsersRecord(props) {
+
+export default function Users(props) {
   const loc = window.location;
 
     const [userid, setUserid] = useState([]);
@@ -36,29 +37,29 @@ export default function UsersRecord(props) {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    // useEffect(() => {
-    //     axios.get('http://20.204.78.15:8080/sqlartifact/getSocietyRecords')
-    //     .then((response) => {
-    //      console.log(response.data)
-    //        setExpType(JSON.parse(response.data.expense))
-    //        setAmount(JSON.parse(response.data.amount))
-    //        setDop(JSON.parse(response.data.date))
-    //       })
-    //       .catch((error) => {
-    //         console.log(error);
-    //       });
+    useEffect(() => {
+        axios.get('http://20.204.78.15:8080/sqlartifact/getSocietyRecords')
+        .then((response) => {
+         console.log(response.data)
+           setExpType(JSON.parse(response.data.expense))
+           setAmount(JSON.parse(response.data.amount))
+           setDop(JSON.parse(response.data.date))
+          })
+          .catch((error) => {
+            console.log(error);
+          });
 
-    //       axios.get('http://20.204.78.15:8080/sqlartifact/getSocietyRecords?type=yearly')
-    //     .then((response) => {
-    //      console.log(response.data)
-    //        setExpYType(JSON.parse(response.data.expense))
-    //        setYearAmount(JSON.parse(response.data.amount))
-    //        setYear(JSON.parse(response.data.date))
-    //       })
-    //       .catch((error) => {
-    //         console.log(error);
-    //       });
-    // },[])
+          axios.get('http://20.204.78.15:8080/sqlartifact/getSocietyRecords?type=yearly')
+        .then((response) => {
+         console.log(response.data)
+           setExpYType(JSON.parse(response.data.expense))
+           setYearAmount(JSON.parse(response.data.amount))
+           setYear(JSON.parse(response.data.date))
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+    },[])
 
     const deleteById = (e, ID) =>{
         e.preventDefault();
@@ -118,20 +119,15 @@ export default function UsersRecord(props) {
         </tr>
   </thead>
   <tbody>
-    <td>10 dec</td>
-    <td>2</td>
-      <td>100</td>
-  </tbody>
-  {/* <tbody>
          {expType && expType.map((ID, index)=>(
           <tr key={`${index}-${ID}`}>
-                     <td>{index+1}</td> 
+                    {/* <td>{index+1}</td> */}
               <td>{dop[index]}</td>
               <td>{ID}</td>
               <td>{amount[index]}</td>
               </tr>
         )) }
-        </tbody> */}
+        </tbody>
 </Table>
 
      ):(
@@ -203,3 +199,5 @@ export default function UsersRecord(props) {
       </div>
     );
 }
+
+
