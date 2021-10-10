@@ -9,6 +9,7 @@ import TableComp from './components/Table';
 import PrivateRoute from './components/PrivateRoute';
 import ValidatedLoginForm from './components/ValidatedLoginForm';
 import PersistentDrawerLeft from'./components/PersistentDrawerLeft';
+import UserDetails from './components/UserDetails';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         <Switch>
           <Route path="/" exact component={Landing} />
           <Route path="/login" exact component={ValidatedLoginForm} />
-          <PrivateRoute exact path="/dashboard" component={PersistentDrawerLeft} />
+          <PrivateRoute path="/userdetails" exact component={UserDetails} name='User Details' />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} name='Dashboard' />
           <PrivateRoute exact path="/table" component={TableComp} />
         </Switch>
       </BrowserRouter>
