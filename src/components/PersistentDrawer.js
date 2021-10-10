@@ -15,9 +15,8 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import StickyHeadTable from'./Dashboard';
+import StickyHeadTable from './Dashboard';
+import { Link } from 'react-router-dom';
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -94,6 +93,7 @@ export default function PersistentDrawerLeft() {
           <Typography variant="h6" noWrap component="div">
             Persistent Drawer
           </Typography>
+
         </Toolbar>
       </AppBar>
       <Drawer
@@ -116,30 +116,22 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+          <Link to='/userdetails'>
+            <ListItem button key='User Details'>
+              <ListItemText primary='User Details' />
             </ListItem>
-          ))}
+          </Link>
+          <Link to='/dashboard'>
+            <ListItem button key='Dashboard'>
+              <ListItemText primary='Dashboard' />
+            </ListItem>
+          </Link>
         </List>
         <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <StickyHeadTable/>
+        <StickyHeadTable />
       </Main>
     </Box>
   );

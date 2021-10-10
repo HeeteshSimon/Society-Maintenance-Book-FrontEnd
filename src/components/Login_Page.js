@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router';
 import NavbarComponent from './Navbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 const Login_Page = () => {
 
     let history = useHistory();
@@ -35,7 +36,7 @@ const Login_Page = () => {
     };
     return (
         <>
-        <NavbarComponent />
+            <NavbarComponent />
             <div style={{ height: "100vh" }} className="d-flex justify-content-center align-items-center">
                 <div className="card card-container-login shadow-lg p-3" style={{ width: "25vw" }}>
                     <h3>Login Here</h3>
