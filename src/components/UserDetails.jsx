@@ -1,5 +1,5 @@
 
-// import axios from 'axios';
+import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import { Table, Button, Modal, Form, Alert } from 'react-bootstrap';
 import { Navbar, Nav, Container } from 'react-bootstrap';
@@ -26,7 +26,7 @@ export default function UserDetails(props) {
     const [show, setShow] = useState(false);
     const [modeMonthly, setModeMonthly] = useState(true);
 
-    const [Data, setData] = useState([]);
+    // const [Data, setData] = useState([]);
     //const [updateFname, setUpdateFname] = useState(); 
     //const [NameUpdate, setNameUpdate] = useState();
     //const [updateLname, setUpdateLname] = useState();
@@ -34,32 +34,36 @@ export default function UserDetails(props) {
     const [updateExpType, setUpdateExpType] = useState();
     const [updateAmount, setUpdateAmount] = useState();
     const [updateId, setUpdateId] = useState(); 
+    const [data,setData]=useState([])
+    const [yearlyData, setYearlyData] = useState([]);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    // useEffect(() => {
-    //     axios.get('http://20.204.78.15:8080/sqlartifact/getSocietyRecords')
-    //     .then((response) => {
-    //      console.log(response.data)
-    //        setExpType(JSON.parse(response.data.expense))
-    //        setAmount(JSON.parse(response.data.amount))
-    //        setDop(JSON.parse(response.data.date))
-    //       })
-    //       .catch((error) => {
-    //         console.log(error);
-    //       });
+    useEffect(() => {
+        axios.get('http://20.204.87.58:8080/sqlartifact/getRecords?flatNumber=102&type=monthly')
+        .then((response) => {
+         console.log(response.data)
+         console.log(response.data.records)
+         const x=JSON.parse(response.data.records)
+         setData(x)
+         console.log(x)
+          })
+          .catch((error) => {
+            console.log(error);
+          });
 
-    //       axios.get('http://20.204.78.15:8080/sqlartifact/getSocietyRecords?type=yearly')
-    //     .then((response) => {
-    //      console.log(response.data)
-    //        setExpYType(JSON.parse(response.data.expense))
-    //        setYearAmount(JSON.parse(response.data.amount))
-    //        setYear(JSON.parse(response.data.date))
-    //       })
-    //       .catch((error) => {
-    //         console.log(error);
-    //       });
-    // },[])
+          axios.get('http://20.204.87.58:8080/sqlartifact/getRecords?flatNumber=102&type=yearly')
+        .then((response) => {
+          console.log(response.data)
+          console.log(response.data.records)
+          const x=JSON.parse(response.data.records)
+          setYearlyData(x)
+          console.log('year',x)
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+    },[])
 
     const deleteById = (e, ID) =>{
         e.preventDefault();
@@ -92,18 +96,47 @@ export default function UserDetails(props) {
         console.log(updateId);
         
     }
+    const DisplayData=() => {
+      if(modeMonthly){
+        return  data.map(
+        
+          (info,index)=>{
+              return(
+                <tr  key={`${Math.random()}-${index}`}>
+                <td>{info.recordId}</td>
+                <td>{info.flatNumber}</td>
+                <td>{info.amount}</td>
+                <td>{info.firstName}</td>
+                <td>{info.lastName}</td>
+                <td>{info.dateOfPay}</td>
+                <td>{info.modeOfPayment}</td>
+                <td>{info.paymentReference}</td>
+            </tr>
+              )
+          }
+      )
+      }
+      return  yearlyData.map(
+        
+        (info,index)=>{
+            return(
+                <tr key={`${index}-${Math.random()}`}>
+                   <td>{info.recordId}</td>
+                <td>{info.flatNumber}</td>
+                <td>{info.amount}</td>
+                <td>{info.firstName}</td>
+                <td>{info.lastName}</td>
+                <td>{info.dateOfPay}</td> 
+                </tr>
+            )
+        }
+    )
+    }
+    
     return (
       <div style={{marginTop: '0.01%'}}>
         {/* <IdleTimerContainer></IdleTimerContainer> */}
-        <Navbar bg="dark" variant="dark">
-<Container>
-<Nav className="me-auto">
-<Nav.Link href="/users" active={loc.pathname === '/users'}>Society Records</Nav.Link>
-
-<Nav.Link href="/userRecords"  active={loc.pathname==='/userRecords'}>My Records</Nav.Link>
-</Nav>
-</Container>
-</Navbar>
+        
                  
           <Button variant="warning" onClick={(e)=>setModeMonthly(true)}>Monthly</Button>
           <Button variant="warning" onClick={(e)=>setModeMonthly(false)}>Yearly</Button>
@@ -113,20 +146,27 @@ export default function UserDetails(props) {
     <Table striped bordered hover key='monthly'>
   <thead>
         <tr>
-            <th>Month</th>
-        <th>Expense Type</th> 
+            <th>Record Id</th>
+        <th>Flat Number</th> 
         <th>Amount</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Date Of Pay</th>
+        <th>Mode Of Payment</th>
+        <th>Payment Reference</th>
         </tr>
   </thead>
   <tbody>
-         {expType && expType.map((ID, index)=>(
+         {/* {expType && expType.map((ID, index)=>(
           <tr key={`${index}-${ID}`}>
-                    {/* <td>{index+1}</td> */}
+                    <td>{index+1}</td>
               <td>{dop[index]}</td>
               <td>{ID}</td>
               <td>{amount[index]}</td>
               </tr>
-        )) }
+        )) } */}
+
+{DisplayData()}
         </tbody>
 </Table>
 
@@ -134,21 +174,26 @@ export default function UserDetails(props) {
         <Table striped bordered hover key='yearly'>
   <thead>
         <tr>
-            <th>Year</th>
-        <th>Expense Type</th> 
+        <th>Record Id</th>
+        <th>Flat Number</th> 
         <th>Amount</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Year</th>
         </tr>
   </thead>
   <tbody>
-         {expYType && expYType.map((ID, index)=>(
+         {/* {expYType && expYType.map((ID, index)=>(
           <tr key={`${ID}-${index}`}>
-                    {/* <td>{index+1}</td> */}
+                    <td>{index+1}</td>
               <td>{year[index]}</td>
               <td>{ID}</td>
               <td>{yearAmount[index]}</td>
               </tr>
-        )) }
+        )) } */}
+        {DisplayData()}
         </tbody>
+
 </Table>
         
      )}

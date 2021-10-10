@@ -1,5 +1,5 @@
 
-// import axios from 'axios';
+import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import { Table, Button, Modal, Form, Alert } from 'react-bootstrap';
 import { Navbar, Nav, Container } from 'react-bootstrap';
@@ -24,7 +24,8 @@ export default function SocietyRecords(props) {
     const [show, setShow] = useState(false);
     const [modeMonthly, setModeMonthly] = useState(true);
 
-    const [Data, setData] = useState([]);
+    const [data, setData] = useState([]);
+    const [yearlyData, setYearlyData] = useState([]);
     //const [updateFname, setUpdateFname] = useState(); 
     //const [NameUpdate, setNameUpdate] = useState();
     //const [updateLname, setUpdateLname] = useState();
@@ -36,27 +37,29 @@ export default function SocietyRecords(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     useEffect(() => {
-        // axios.get('http://20.204.78.15:8080/sqlartifact/getSocietyRecords')
-        // .then((response) => {
-        //  console.log(response.data)
-        //    setExpType(JSON.parse(response.data.expense))
-        //    setAmount(JSON.parse(response.data.amount))
-        //    setDop(JSON.parse(response.data.date))
-        //   })
-        //   .catch((error) => {
-        //     console.log(error);
-        //   });
+        axios.get('http://20.204.87.58:8080/sqlartifact/society')
+        .then((response) => {
+          console.log(response.data)
+          console.log(response.data.records)
+          const x=JSON.parse(response.data.records)
+          setData(x)
+          console.log(x)
+          }) 
+          .catch((error) => {
+            console.log(error);
+          });
 
-        //   axios.get('http://20.204.78.15:8080/sqlartifact/getSocietyRecords?type=yearly')
-        // .then((response) => {
-        //  console.log(response.data)
-        //    setExpYType(JSON.parse(response.data.expense))
-        //    setYearAmount(JSON.parse(response.data.amount))
-        //    setYear(JSON.parse(response.data.date))
-        //   })
-        //   .catch((error) => {
-        //     console.log(error);
-        //   });
+          axios.get('http://20.204.87.58:8080/sqlartifact/society?type=yearly')
+        .then((response) => {
+          console.log(response.data)
+          console.log(response.data.records)
+          const x=JSON.parse(response.data.records)
+          setYearlyData(x)
+          console.log(x)
+          })
+          .catch((error) => {
+            console.log(error);
+          });
     },[])
 
     const deleteById = (e, ID) =>{
@@ -90,6 +93,41 @@ export default function SocietyRecords(props) {
         console.log(updateId);
         
     }
+    console.log('.....CHECKING', data)
+    const DisplayData=() => {
+      if(modeMonthly){
+        return  data.map(
+        
+          (info,index)=>{
+              return(
+                  <tr  key={`${Math.random()}-${index}`}>
+                      <td>{info.month}</td>
+                      <td>{info.expenseType}</td>
+                      <td>{info.amount}</td>
+                      <td>{info.dateOfPay}</td>
+                      <td>{info.modeOfPayment}</td>
+                      <td>{info.paymentReference}</td>
+                      <td>{info.expenseDescription}</td>
+                      {/* <td>{info.expenseId}</td> */}
+                  </tr>
+              )
+          }
+      )
+      }
+      return  yearlyData.map(
+        
+        (info,index)=>{
+            return(
+                <tr key={`${index}-${Math.random()}`}>
+                    <td>{info.expenseType}</td>
+                    <td>{info.year}</td>
+                    <td>{info.amount}</td>
+                </tr>
+            )
+        }
+    )
+    }
+   
     return (
       <div style={{marginTop: '0.01%'}}>
         {/* <IdleTimerContainer></IdleTimerContainer> */}
@@ -102,20 +140,27 @@ export default function SocietyRecords(props) {
     <Table striped bordered hover key='monthly'>
   <thead>
         <tr>
-            <th>Month</th>
+        <th>Month</th>
         <th>Expense Type</th> 
         <th>Amount</th>
+        <th>Date of Payment</th>
+        <th>Mode Of Payment</th>
+        <th>Payment Reference</th>
+        <th>Expense Description</th>
+        {/* <th>Expense Id</th> */}
         </tr>
   </thead>
   <tbody>
-         {expType && expType.map((ID, index)=>(
+         {/* {expType && expType.map((ID, index)=>(
           <tr key={`${index}-${ID}`}>
-                    {/* <td>{index+1}</td> */}
+                    <td>{index+1}</td>
               <td>{dop[index]}</td>
               <td>{ID}</td>
               <td>{amount[index]}</td>
               </tr>
-        )) }
+        )) } */}
+
+{DisplayData()}
         </tbody>
 </Table>
 
@@ -123,20 +168,21 @@ export default function SocietyRecords(props) {
         <Table striped bordered hover key='yearly'>
   <thead>
         <tr>
-            <th>Year</th>
         <th>Expense Type</th> 
+            <th>Year</th>
         <th>Amount</th>
         </tr>
   </thead>
   <tbody>
-         {expYType && expYType.map((ID, index)=>(
+         {/* {expYType && expYType.map((ID, index)=>(
           <tr key={`${ID}-${index}`}>
-                    {/* <td>{index+1}</td> */}
+                    <td>{index+1}</td>
               <td>{year[index]}</td>
               <td>{ID}</td>
               <td>{yearAmount[index]}</td>
               </tr>
-        )) }
+        )) } */}
+        {DisplayData()}
         </tbody>
 </Table>
         
