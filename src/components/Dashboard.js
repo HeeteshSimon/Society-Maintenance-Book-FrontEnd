@@ -12,19 +12,6 @@ import { Link } from 'react-router-dom';
 // import Sidebar from './Sidebar'
 
 // import styled from '@emotion/styled'
-
-const Dashboard = () => {
-    return (
-       <>
-         <Link to="/table" >TABLE PAGE</Link>
-         <h1>Logged in . This is dashboard</h1>
-       </>
-            );
-        }
-
-
-{/* <Sidebar/> */}
-
 const columns = [
   { id: 'name', label: 'Name', minWidth: 170 },
   { id: 'code', label: 'ISO\u00a0Code', minWidth: 100 },

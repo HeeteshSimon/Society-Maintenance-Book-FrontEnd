@@ -62,7 +62,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
-  justifyContent: 'flex-end',
+  justifyContent: 'flex-left',
 }));
 
 export default function PersistentDrawerLeft() {
@@ -92,7 +92,7 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Persistent drawer
+            Persistent Drawer
           </Typography>
         </Toolbar>
       </AppBar>

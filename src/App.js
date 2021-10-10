@@ -8,7 +8,7 @@ import Dashboard from './components/Dashboard';
 import TableComp from './components/Table';
 import PrivateRoute from './components/PrivateRoute';
 import ValidatedLoginForm from './components/ValidatedLoginForm';
-import PersistentDrawerLeft from'./components/demo';
+import PersistentDrawerLeft from'./components/PersistentDrawer';
 
 function App() {
   return (
