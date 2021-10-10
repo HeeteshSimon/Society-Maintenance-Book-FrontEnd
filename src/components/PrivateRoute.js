@@ -135,6 +135,11 @@ export default function PrivateRoute({ component: Component, name, ...rest }) {
                                                 <ListItemText primary='User Details' />
                                             </ListItem>
                                         </Link>
+                                        <Link to='/Defaulter'>
+                                            <ListItem button key='Defaulter'>
+                                                <ListItemText primary='Defaulter' />
+                                            </ListItem>
+                                        </Link>
                                         <Link to='/dashboard'>
                                             <ListItem button key='Dashboard'>
                                                 <ListItemText primary='Dashboard' />
