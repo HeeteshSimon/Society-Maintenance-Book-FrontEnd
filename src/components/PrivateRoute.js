@@ -123,15 +123,16 @@ export default function PrivateRoute({ component: Component, name, ...rest }) {
                                         <Typography variant="h6" noWrap component="div">
                                             {name || ''}
                                         </Typography>
-                                        <div style={{
-                                            position: 'absolute',
-                                            right: 5,
-                                            top: 10,
-                                        }} >
-                                            <Button variant="contained" endIcon={<LogoutIcon />} size="large" href="/" >
-                                                LogOut
-                                            </Button>
-                                        </div>
+                                        
+                                        {/* <div style={{ */}
+                                            {/* DashBoards */}
+                                            {/*  */}
+                                            {/*  */}
+                                        {/* // }} > */}
+                                            {/* <Button variant="contained" endIcon={<LogoutIcon />} size="large" href="/" > */}
+                                                {/* LogOut */}
+                                            {/* </Button> */}
+                                        {/* </div> */}
                                     </Toolbar>
                                 </AppBar>
                                 <Drawer

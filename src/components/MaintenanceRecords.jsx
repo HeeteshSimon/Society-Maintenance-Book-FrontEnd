@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { Table, Button, Modal, Form, Alert } from 'react-bootstrap';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-// import IdleTimerContainer from './IdealTimer';
+import IdleTimerContainer from '../IdealTime';
 // import AddRecords from './AddRecords'
 
 export default function MaintainanceRecords(props) {
@@ -96,7 +96,7 @@ export default function MaintainanceRecords(props) {
   }
   return (
     <div style={{ marginTop: '0.01%' }}>
-      {/* <IdleTimerContainer></IdleTimerContainer> */}
+      <IdleTimerContainer></IdleTimerContainer>
       <Button className="float-right" style={{ marginTop: "3.5%" }} variant="primary" onClick={() => { setAddShow(true) }}>Add</Button>
       {/* <AddRecords AddShow={AddShow} setAddShow={setAddShow} />   */}
       <div style={{ marginTop: '2%' }}></div>

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Button, Modal, Form, Alert } from 'react-bootstrap';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-// import IdleTimerContainer from './IdealTimer'
+import IdleTimerContainer from '../IdealTime';
 // import AddAdminRecords from './AddAdminRecords';
 
 export default function ExpenseRecords(props) {
@@ -123,7 +123,7 @@ export default function ExpenseRecords(props) {
   }
   return (
     <div style={{ marginTop: '0.01%', padding: '20px' }}>
-      {/* <IdleTimerContainer></IdleTimerContainer> */}
+      <IdleTimerContainer></IdleTimerContainer> 
       {/* <AddAdminRecords AddShow={AddShow} setAddShow={setAddShow} />   */}{' '}
       <Button variant="primary" onClick={() => { setAddShow(true) }}>Add</Button>{' '}
       <Button variant="warning" onClick={(e) => setModeMonthly(true)}>Monthly</Button>{' '}
