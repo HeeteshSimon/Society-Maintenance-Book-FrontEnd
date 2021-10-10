@@ -3,10 +3,10 @@ import zxcvbn from 'zxcvbn';
 
 const PasswordStrengthMeter = ({ password }) => {
   const testResult = zxcvbn(password);
-  const num = testResult.score * 100/4;
+  const num = testResult.score * 100 / 4;
 
   const createPassLabel = () => {
-    switch(testResult.score) {
+    switch (testResult.score) {
       case 0:
         return 'Very weak';
       case 1:
@@ -23,7 +23,7 @@ const PasswordStrengthMeter = ({ password }) => {
   }
 
   const funcProgressColor = () => {
-    switch(testResult.score) {
+    switch (testResult.score) {
       case 0:
         return '#ffffff';
       case 1:

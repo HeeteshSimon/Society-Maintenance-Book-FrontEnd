@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Table} from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 // import axios from 'axios';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 // import IdleTimerContainer from './IdealTimer';
 
 export default function Defaulter(props) {
-  const loc = window.location;
+    const loc = window.location;
 
     const [fname, setFname] = useState([]);
     const [lname, setLname] = useState([]);
@@ -14,12 +14,12 @@ export default function Defaulter(props) {
     const [id, setId] = useState([]);
     const [show, setShow] = useState(false);
     const [updateId, setUpdateId] = useState();
-    
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     // useEffect(() => {
 
-        
+
     //      axios.get('http://20.204.78.15:8080/sqlartifact/def/all')
     //     .then((response) => {
     //         console.log(response)
@@ -41,11 +41,11 @@ export default function Defaulter(props) {
     //       });
     // }, [])
 
-    
+
     return (
-        <div style={{marginTop: '0.01%'}}>
+        <div style={{ marginTop: '0.01%' }}>
             {/* <IdleTimerContainer></IdleTimerContainer> */}
-          <div style={{marginTop: '2%'}}></div>
+            <div style={{ marginTop: '2%' }}></div>
             <Table striped bordered hover>
                 <thead>
                     <tr>

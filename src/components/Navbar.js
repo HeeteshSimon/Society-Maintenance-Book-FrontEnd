@@ -9,7 +9,7 @@ const NavbarComponent = () => {
         history.push("/");
     }
     return (
-        <Navbar bg="dark" variant="dark" expand="lg" className='px-3' style={{zIndex:'9999'}}>
+        <Navbar bg="dark" variant="dark" expand="lg" className='px-3' style={{ zIndex: '9999' }}>
             <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

@@ -22,8 +22,13 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import TableViewIcon from '@mui/icons-material/TableView';
+import TableChartTwoToneIcon from '@mui/icons-material/TableChartTwoTone';
+import TableRowsTwoToneIcon from '@mui/icons-material/TableRowsTwoTone';
+import PersonIcon from '@mui/icons-material/Person';
+import RunningWithErrorsIcon from '@mui/icons-material/RunningWithErrors';
+import DashboardCustomizeOutlinedIcon from '@mui/icons-material/DashboardCustomizeOutlined';
+import VerifiedUserOutlinedIcon from '@mui/icons-material/VerifiedUserOutlined';
 import StickyHeadTable from './Dashboard';
 import { Link } from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -119,10 +124,10 @@ export default function PrivateRoute({ component: Component, name, ...rest }) {
                                             {name || ''}
                                         </Typography>
                                         <div style={{
-                                             position: 'absolute',
-                                             right: 5,
-                                             top: 10,
-                                                     }} >                              
+                                            position: 'absolute',
+                                            right: 5,
+                                            top: 10,
+                                        }} >
                                             <Button variant="contained" endIcon={<LogoutIcon />} size="large" href="/" >
                                                 LogOut
                                             </Button>
@@ -151,44 +156,53 @@ export default function PrivateRoute({ component: Component, name, ...rest }) {
                                     <List>
                                         <ListItem component={Link} to="/Dashboard" button key='Dashboard'>
                                             <ListItemIcon>
-                                                <InboxIcon />
+                                                <DashboardCustomizeOutlinedIcon />
                                             </ListItemIcon>
                                             <ListItemText primary={"Dashboard"} />
                                         </ListItem>
                                         <ListItem component={Link} to="/UserDetails" button key='User Details'>
                                             <ListItemIcon>
-                                                <InboxIcon />
+                                                <VerifiedUserOutlinedIcon />
                                             </ListItemIcon>
                                             <ListItemText primary='User Details' />
                                         </ListItem>
                                         <ListItem component={Link} to="/Defaulter" button key='Defaulter'>
                                             <ListItemIcon>
-                                                <InboxIcon />
+                                                <RunningWithErrorsIcon />
                                             </ListItemIcon>
                                             <ListItemText primary='Defaulter' />
                                         </ListItem>
                                         <ListItem component={Link} to="/ExpenseRecords" button key='ExpenseRecords'>
                                             <ListItemIcon>
-                                                <InboxIcon />
+                                                <TableViewIcon />
                                             </ListItemIcon>
-                                            <ListItemText primary='ExpenseRecords' />
+                                            <ListItemText primary='Expense Records' />
                                         </ListItem>
                                         <ListItem component={Link} to="/MaintenanceRecords" button key='MaintenanceRecords'>
                                             <ListItemIcon>
-                                                <InboxIcon />
+                                                <TableRowsTwoToneIcon />
                                             </ListItemIcon>
-                                            <ListItemText primary='MaintenanceRecords' />
+                                            <ListItemText primary='Maintenance Records' />
                                         </ListItem>
                                         <ListItem component={Link} to="/SocietyRecords" button key='SocietyRecords'>
-                                            <ListItemText primary='SocietyRecords' />
+                                            <ListItemIcon>
+                                                <TableChartTwoToneIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary='Society Records' />
                                         </ListItem>
                                         <ListItem component={Link} to="/PersonalDetails" button key='PersonalDetails'>
-                                            <ListItemText primary='PersonalDetails' />
+                                            <ListItemIcon>
+                                                <PersonIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary='Personal Details' />
                                         </ListItem>
-                                        <ListItem component={Link} to="/PersonalDetails" button key='PersonalDetails'>
-                                            <ListItemText primary='PersonalDetails' />
-                                        </ListItem>
+                                        {/* <ListItem component={Link} to="/PersonalDetails" button key='PersonalDetails'>
+                                            <ListItemText primary='Personal Details' />
+                                        </ListItem> */}
                                         <ListItem onclick={handlelogout} button key='PersonalDetails'>
+                                            <ListItemIcon>
+                                                <LogoutIcon />
+                                            </ListItemIcon>
                                             <ListItemText primary='Logout' />
                                         </ListItem>
 
