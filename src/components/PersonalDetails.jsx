@@ -5,7 +5,7 @@ import { Table, Button, Modal, Form, Alert } from 'react-bootstrap';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 // import IdleTimerContainer from './IdealTimer';
 
-export default function Pusers() {
+export default function PersonalDetails() {
   const loc = window.location;
 
     const [userId, setUserId] = useState([]);

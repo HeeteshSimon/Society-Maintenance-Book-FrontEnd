@@ -1,8 +1,12 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { Redirect, Route } from 'react-router';
+import { useHistory } from 'react-router';
 // import IdleTimerContainer from '../IdealTime';
+// import ButtonUnstyled, { buttonUnstyledClasses } from '@mui/core/ButtonUnstyled';
+// import { styled } from '@mui/system';
 import { styled, useTheme } from '@mui/material/styles';
+import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -20,58 +24,64 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import StickyHeadTable from'./Dashboard';
+import StickyHeadTable from './Dashboard';
 import { Link } from 'react-router-dom';
+import LogoutIcon from '@mui/icons-material/Logout';
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
-  ({ theme, open }) => ({
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
+    ({ theme, open }) => ({
+        flexGrow: 1,
+        padding: theme.spacing(3),
+        transition: theme.transitions.create('margin', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+        marginLeft: `-${drawerWidth}px`,
+        ...(open && {
+            transition: theme.transitions.create('margin', {
+                easing: theme.transitions.easing.easeOut,
+                duration: theme.transitions.duration.enteringScreen,
+            }),
+            marginLeft: 0,
+        }),
     }),
-    marginLeft: `-${drawerWidth}px`,
-    ...(open && {
-      transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    }),
-  }),
 );
 
 const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
+    shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
-  transition: theme.transitions.create(['margin', 'width'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
     transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
     }),
-  }),
+    ...(open && {
+        width: `calc(100% - ${drawerWidth}px)`,
+        marginLeft: `${drawerWidth}px`,
+        transition: theme.transitions.create(['margin', 'width'], {
+            easing: theme.transitions.easing.easeOut,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+    }),
 }));
 
 const DrawerHeader = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-  justifyContent: 'flex-end',
+    display: 'flex',
+    alignItems: 'center',
+    padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+    justifyContent: 'flex-end',
 }));
 
 
 
 export default function PrivateRoute({ component: Component, name, ...rest }) {
+    let history = useHistory();
+    function handlelogout() {
+        localStorage.clear();
+        history.push("/");
+    }
     let currentUser = localStorage.getItem("isLoggedIn") === null ? false : localStorage.getItem("isLoggedIn");
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -106,8 +116,17 @@ export default function PrivateRoute({ component: Component, name, ...rest }) {
                                             <MenuIcon />
                                         </IconButton>
                                         <Typography variant="h6" noWrap component="div">
-                                           {name || ''}
+                                            {name || ''}
                                         </Typography>
+                                        <div style={{
+                                             position: 'absolute',
+                                             right: 5,
+                                             top: 10,
+                                                     }} >                              
+                                            <Button variant="contained" endIcon={<LogoutIcon />} size="large" href="#contained-buttons" >
+                                                LogOut
+                                            </Button>
+                                        </div>
                                     </Toolbar>
                                 </AppBar>
                                 <Drawer
@@ -130,41 +149,49 @@ export default function PrivateRoute({ component: Component, name, ...rest }) {
                                     </DrawerHeader>
                                     <Divider />
                                     <List>
-                                        <Link to='/dashboard'>
-                                            <ListItem button key='Dashboard'>
-                                                <ListItemText primary='Dashboard' />
-                                            </ListItem>
-                                        </Link>
-                                        <Link to='/userdetails'>
-                                            <ListItem button key='User Details'>
-                                                <ListItemText primary='User Details' />
-                                            </ListItem>
-                                        </Link>
-                                        <Link to='/Defaulter'>
-                                            <ListItem button key='Defaulter'>
-                                                <ListItemText primary='Defaulter' />
-                                            </ListItem>
-                                        </Link>
-                                        <Link to='/ExpenseRecords'>
-                                            <ListItem button key='ExpenseRecords'>
-                                                <ListItemText primary='ExpenseRecords' />
-                                            </ListItem>
-                                        </Link>
-                                        <Link to='/MaintenanceRecords'>
-                                            <ListItem button key='MaintenanceRecords'>
-                                                <ListItemText primary='MaintenanceRecords' />
-                                            </ListItem>
-                                        </Link>
-                                        <Link to='/SocietyRecords'>
-                                            <ListItem button key='SocietyRecords'>
-                                                <ListItemText primary='SocietyRecords' />
-                                            </ListItem>
-                                        </Link>
-                                        <Link to='/PersonalDetails'>
-                                            <ListItem button key='PersonalDetails'>
-                                                <ListItemText primary='PersonalDetails' />
-                                            </ListItem>
-                                        </Link>
+                                        <ListItem component={Link} href="/Dasboard" button key='Dashboard'>
+                                            <ListItemIcon>
+                                                <InboxIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary={"Dashboard"} />
+                                        </ListItem>
+                                        <ListItem component={Link} href="/UserDetails" button key='User Details'>
+                                            <ListItemIcon>
+                                                <InboxIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary='User Details' />
+                                        </ListItem>
+                                        <ListItem component={Link} href="/Defaulter" button key='Defaulter'>
+                                            <ListItemIcon>
+                                                <InboxIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary='Defaulter' />
+                                        </ListItem>
+                                        <ListItem component={Link} href="/ExpenseRecords" button key='ExpenseRecords'>
+                                            <ListItemIcon>
+                                                <InboxIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary='ExpenseRecords' />
+                                        </ListItem>
+                                        <ListItem component={Link} href="/MaintenanceRecords" button key='MaintenanceRecords'>
+                                            <ListItemIcon>
+                                                <InboxIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary='MaintenanceRecords' />
+                                        </ListItem>
+                                        <ListItem component={Link} href="/SocietyRecords" button key='SocietyRecords'>
+                                            <ListItemText primary='SocietyRecords' />
+                                        </ListItem>
+                                        <ListItem component={Link} href="/PersonalDetails" button key='PersonalDetails'>
+                                            <ListItemText primary='PersonalDetails' />
+                                        </ListItem>
+                                        <ListItem component={Link} href="/PersonalDetails" button key='PersonalDetails'>
+                                            <ListItemText primary='PersonalDetails' />
+                                        </ListItem>
+                                        <ListItem onclick={handlelogout} button key='PersonalDetails'>
+                                            <ListItemText primary='Logout' />
+                                        </ListItem>
+
                                     </List>
                                     <Divider />
                                 </Drawer>
@@ -173,7 +200,7 @@ export default function PrivateRoute({ component: Component, name, ...rest }) {
                                     <Component {...props} />
                                 </Main>
                             </Box>
-                           
+
                         </Container>
                     </>
                 ) : (

@@ -5,14 +5,14 @@ import { Container, Carousel, Navbar, Nav, Card, Placeholder } from "react-boots
 import images from "../images";
 import { render } from '@testing-library/react';
 // import { Alert } from '@coreui/react';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Landing = () => {
     render()
     return (
         <>
 
-            <Navbar bg="dark" variant="dark">
+            <Navbar bg="dark" variant="dark" >
                 <Container>
                     <Navbar.Brand href="#home">Navbar</Navbar.Brand>
                     <Nav className="me-auto">
@@ -51,9 +51,9 @@ const Landing = () => {
                                 Welcome to <br /> Continental Housing Society!
                             </h1>
                             <br />
-                            <div className="justify-content-center align-items-center">
+                            <div className="justify-content-center align-items-center" style={{position: 'absolute', right: 950  }}>
                                 <Link
-                                    style={{ fontSize: "1.5rem" }}
+                                    style={{ fontSize: "1.5rem"  }}
                                     className="btn btn-primary rounded-pill px-5 shadow"
                                     to="/login">
                                     Login

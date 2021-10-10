@@ -15,6 +15,7 @@ import ExpenseRecords from './components/ExpenseRecords';
 import MaintenanceRecords from './components/MaintenanceRecords';
 import SocietyRecords from './components/SocietyRecords';
 import PersonalDetails from './components/PersonalDetails';
+import PersistentDrawerLeft from './components/PersistentDrawer';
 
 function App() {
   return (

@@ -6,7 +6,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 // import IdleTimerContainer from './IdealTimer';
 // import AddRecords from './AddRecords'
 
-export default function Records(props) {
+export default function MaintainanceRecords(props) {
   const loc = window.location;
     const [userid, setUserid] = useState([]);
     const [fname, setFname] = useState([]);
