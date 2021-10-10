@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Modal, Form, Button, Toast } from 'react-bootstrap'
 import axios from 'axios';
-// import IdleTimerContainer from './IdealTimer'
+import PasswordStrengthMeter from '../components/PasswordStrengthMeter'; 
+// import IdleTimerContainer from '../'
 
 export default function AddUser(props) {
     const handleClose = () => props.setAddShow(false);
@@ -79,7 +80,7 @@ export default function AddUser(props) {
     return (
 
         <div>
-            {/* <IdleTimerContainer></IdleTimerContainer> */}
+             {/* <IdleTimerContainer></IdleTimerContainer> */}
             <Toast bg="success" onClose={() => setShow(false)} show={show} delay={3000} autohide>
                 <Toast.Header>
                     <strong className="me-auto">Success</strong>
@@ -88,7 +89,7 @@ export default function AddUser(props) {
                 <Toast.Body className="success">Data inserted successfully</Toast.Body>
             </Toast>
             {props.AddShow &&
-                <Modal show={props.AddShow} onHide={handleClose}>
+                <Modal show={props.AddShow} onHide={handleClose} className="mt-5">
                     <Modal.Header closeButton>
                         <Modal.Title>Add User</Modal.Title>
                     </Modal.Header>
@@ -132,21 +133,27 @@ export default function AddUser(props) {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="userPassword">
                             <Form.Label>Password</Form.Label>
+                            {/* <PasswordStrengthMeter password={ userPassword } /> */}
                             <Form.Control type="password" value={userPassword} onChange={handleOnChangeUserPassword} placeholder="Enter password" />
+                            
+                            
+                            
                             <Form.Text className="text-muted">
                                
                             </Form.Text>
+                            
+                                                        
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="userRole">
                             <Form.Label>User role</Form.Label>
-                            <Form.Control type="password" value={userRole} onChange={handleOnChangeUserRole} placeholder="Enter password" />
+                            <Form.Control type="text" value={userRole} onChange={handleOnChangeUserRole} placeholder="Enter role" />
                             <Form.Text className="text-muted">
                                
                             </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="memberCount">
                             <Form.Label>Member Count</Form.Label>
-                            <Form.Control type="text" value={memberCount} onChange={handleOnChangeMemberCount} placeholder="Enter Member Count" />
+                            <Form.Control type="number" value={memberCount} onChange={handleOnChangeMemberCount} placeholder="Enter Member Count" />
                             <Form.Text className="text-muted">
                                
                             </Form.Text>

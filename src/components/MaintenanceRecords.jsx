@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react'
 import { Table, Button, Modal, Form, Alert } from 'react-bootstrap';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import IdleTimerContainer from '../IdealTime';
-// import AddRecords from './AddRecords'
+import AddRecords from './AddRecords';
 
 export default function MaintainanceRecords(props) {
   const loc = window.location;
@@ -106,7 +106,7 @@ export default function MaintainanceRecords(props) {
                   <td>{info.dateOfPay}</td>
                   <td>{info.modeOfPayment}</td>
                   <td>{info.paymentReference}</td>
-                  <td><Button variant="warning" onClick={(e)=>upDatebyId(e,ID)}>Update</Button>&nbsp;&nbsp;<Button variant="danger" onClick={(e)=>deleteById(e,ID)}>Delete</Button></td>
+                  {/* <td><Button variant="warning" onClick={(e)=>upDatebyId(e,ID)}>Update</Button>&nbsp;&nbsp;<Button variant="danger" onClick={(e)=>deleteById(e,ID)}>Delete</Button></td> */}
 
               </tr>
           )
@@ -118,7 +118,7 @@ export default function MaintainanceRecords(props) {
           {/* <IdleTimerContainer></IdleTimerContainer> */}
           
           <Button className="float-right" style={{marginTop: "3.5%"}} variant="primary" onClick={() => { setAddShow(true) }}>Add</Button>
-    {/* <AddRecords AddShow={AddShow} setAddShow={setAddShow} />   */}
+    <AddRecords AddShow={AddShow} setAddShow={setAddShow} />  
           <div style={{marginTop: '2%'}}></div>
             <Table striped bordered hover>
   <thead>
@@ -129,7 +129,7 @@ export default function MaintainanceRecords(props) {
       <th>Date of Payment</th>
       <th>Mode Of Payment</th>
       <th>Payment Reference</th>
-      <th>Actions</th>
+      {/* <th>Actions</th> */}
     </tr>
   </thead>
   <tbody>

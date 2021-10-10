@@ -1,32 +1,44 @@
 import React, { useState } from 'react'
 import { Modal, Form, Button, Toast } from 'react-bootstrap'
 import axios from 'axios';
-import IdleTimerContainer from './IdealTimer';
+// import IdleTimerContainer from './IdealTimer';
 
 export default function AddRecords(props) {
     const handleClose = () => props.setAddShow(false);
     const handleShow = () => props.setAddShow(true);
     const [ID, setID] = useState([]);
+    const [flatNumber, setFlatNumber] = useState([]);
+
     const [show, setShow] = useState(false);
     const [amount, setAmount] = useState([])
-    const [dop, setDop] = useState([])
+    const [dateOfPayment, setDateOfPayment] = useState([])
+    const [modeOfPayment, setModeOfPayment] = useState([])
+    const [paymentReference, setPaymentReference] = useState([])
 
 
-    const handleOnChangeId = (e) => {
+    const handleOnChangeFlatNumber = (e) => {
         e.preventDefault();
-        setID(e.target.value)
+        setFlatNumber(e.target.value)
     }
     const handleOnChangeAmount = (e) => {
         e.preventDefault();
         setAmount(e.target.value)
     }
-    const handleOnChangeDop = (e) => {
+    const handleOnChangeDateOfPayment = (e) => {
         e.preventDefault();
-        setDop(e.target.value)
+        setDateOfPayment(e.target.value)
+    }
+    const handleOnChangeModeOfPayment = (e) => {
+        e.preventDefault();
+        setModeOfPayment(e.target.value)
+    }
+    const handleOnChangePaymentReference = (e) => {
+        e.preventDefault();
+        setPaymentReference(e.target.value)
     }
     const addRecord = (e) => {
         e.preventDefault();
-        axios.get(`http://20.204.78.15:8080/sqlartifact/addUserRecord?uid=${ID}&amount=${amount}&date=${dop}`)
+        axios.get(`http://20.204.78.15:8080/sqlartifact/addUserRecord?flatNumber=${flatNumber}&amount=${amount}&dateOfPayment=${dateOfPayment}&modeOfPayment=${modeOfPayment}&paymentReference=${paymentReference}`)
             .then(res => {
                 setShow(true)
                 console.log(res.data)
@@ -40,7 +52,7 @@ export default function AddRecords(props) {
     return (
 
         <div>
-            <IdleTimerContainer></IdleTimerContainer>
+            {/* <IdleTimerContainer></IdleTimerContainer> */}
             <Toast bg="success" onClose={() => setShow(false)} show={show} delay={3000} autohide>
                 <Toast.Header>
                     <strong className="me-auto">Success</strong>
@@ -49,16 +61,16 @@ export default function AddRecords(props) {
                 <Toast.Body className="success">Data inserted successfully</Toast.Body>
             </Toast>
             {props.AddShow &&
-                <Modal show={props.AddShow} onHide={handleClose}>
+                <Modal show={props.AddShow} onHide={handleClose} className="mt-5">
                     <Modal.Header closeButton>
                         <Modal.Title>Add Record</Modal.Title>
                     </Modal.Header>
 
                     <Form>
                         <Modal.Body>
-                            <Form.Group className="mb-3" controlId="ID">
-                                <Form.Label>User ID </Form.Label>
-                                <Form.Control type="text" placeholder="Enter user ID " value={ID} onChange={handleOnChangeId} />
+                            <Form.Group className="mb-3" controlId="flatNumber">
+                                <Form.Label>Flat Number </Form.Label>
+                                <Form.Control type="number" placeholder="Enter Flat Number " value={flatNumber} onChange={handleOnChangeFlatNumber} />
                                 <Form.Text className="text-muted">
 
                                 </Form.Text>
@@ -71,9 +83,22 @@ export default function AddRecords(props) {
                                 </Form.Text>
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="dop">
+                            <Form.Group className="mb-3" controlId="dateOfPayment">
                                 <Form.Label>Date of Payment</Form.Label>
-                                <Form.Control type="date" placeholder="Enter Date of Payment" value={dop} onChange={handleOnChangeDop} />
+                                <Form.Control type="date" placeholder="Enter Date of Payment" value={dateOfPayment} onChange={handleOnChangeDateOfPayment} />
+                                <Form.Text className="text-muted">
+
+                                </Form.Text>
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="modeOfPayment">
+                                <Form.Label>Mode of Payment</Form.Label>
+                                <Form.Control type="text" placeholder="Enter Mode of Payment" value={modeOfPayment} onChange={handleOnChangeModeOfPayment} />
+                                <Form.Text className="text-muted">
+                                </Form.Text>
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="paymentReference">
+                                <Form.Label>Payment Reference</Form.Label>
+                                <Form.Control type="number" placeholder="Enter Payment Reference" value={paymentReference} onChange={handleOnChangePaymentReference} />
                                 <Form.Text className="text-muted">
 
                                 </Form.Text>

@@ -3,7 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Table, Button, Modal, Form, Alert } from 'react-bootstrap';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-// import IdleTimerContainer from './IdealTimer'
+import IdleTimerContainer from '../IdealTime';
 
 export default function UserDetails(props) {
   const loc = window.location;
@@ -136,7 +136,7 @@ export default function UserDetails(props) {
 
   return (
     <div style={{ marginTop: '0.01%', padding: '20px' }}>
-      {/* <IdleTimerContainer></IdleTimerContainer> */}
+      <IdleTimerContainer></IdleTimerContainer>
       <Button variant="warning" style={{ marginRight:'7px'}} onClick={(e) => setModeMonthly(true)}>Monthly</Button>{" "}
       <Button variant="warning" onClick={(e) => setModeMonthly(false)}>Yearly</Button>{" "}
 

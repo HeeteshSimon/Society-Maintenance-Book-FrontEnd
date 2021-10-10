@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 import { Table, Button, Modal, Form, Alert } from 'react-bootstrap';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import IdleTimerContainer from '../IdealTime';
-// import AddAdminRecords from './AddAdminRecords';
+import AddAdminRecords from './AddAdminRecords';
 
 export default function ExpenseRecords(props) {
   const loc = window.location;
@@ -159,10 +159,10 @@ export default function ExpenseRecords(props) {
 
     return (
       <div style={{marginTop: '0.01%'}}>
-        {/* <IdleTimerContainer></IdleTimerContainer> */}
+        <IdleTimerContainer></IdleTimerContainer> 
      
                 <Button className="float-right" style={{marginTop: "3.5%"}} variant="primary" onClick={() => { setAddShow(true) }}>Add</Button>
-    {/* <AddAdminRecords AddShow={AddShow} setAddShow={setAddShow} />   */}
+    <AddAdminRecords AddShow={AddShow} setAddShow={setAddShow} />  
           <Button variant="warning" onClick={(e)=>setModeMonthly(true)}>Monthly</Button>
           <Button variant="warning" onClick={(e)=>setModeMonthly(false)}>Yearly</Button>
       

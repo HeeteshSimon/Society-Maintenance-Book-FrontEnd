@@ -3,27 +3,28 @@ import { Table, Button, Modal, Form, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import AddUser from './AddUser';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-// import IdleTimerContainer from './IdealTimer';
+import IdleTimerContainer from '../IdealTime';
 
 export default function PersonalDetails() {
   const loc = window.location;
 
     const [userId, setUserId] = useState([]);
     const [userName ,setUserName] = useState([]);
-    const [fname, setFname] = useState([]);
-    const [lname, setLname] = useState([]);
-    const [email, setEmail] = useState([]);
-    // const [amount, setAmount] = useState([]);
-    // const [dop, setDop] = useState();
+    const [firstName, setFirstName] = useState([]);
+    const [flatNumber, setFlatName] = useState([]);
+    const [lastName, setLastNname] = useState([]);
+    const [emailId, setEmailId] = useState([]);
+    const [memberCount, setmemberCount] = useState([]);
+    const [membershipJoin, setMembershipJoin] = useState([]);
     const [ID, setId] = useState();
     const [AddShow , setAddShow] =useState(false);
-    //const [name, setName] = useState([]);
+    const [membershipEnd, setMembershipEnd] = useState([]);
     const [updateData, setUpdateData] = useState();
     const [show, setShow] = useState(false);
     const [data, setData] = useState([]);
     const [updateFname, setUpdateFname] = useState(); 
     const [updateUserName, setUpdateUserName] = useState(); 
-    //const [NameUpdate, setNameUpdate] = useState();
+    const [userPassword, setUserPassword] = useState();
     const [updateLname, setUpdateLname] = useState();
     const [updateEmail, setUpdateEmail] = useState();
     const [updateMemberCount, setUpdateMemberCount] = useState();
@@ -51,6 +52,15 @@ export default function PersonalDetails() {
     const deleteById = (e, ID) =>{
         e.preventDefault();
         console.log(ID);
+        axios.get("http://20.204.78.15:8080/sqlartifact/delete/"+ID)
+        .then((response)=>{
+            console.log(response.data);
+            window.location.reload();
+            setUpdateData(Math.random());
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
        
     }
     const upDatebyId = async (e, ID) =>{
@@ -58,6 +68,17 @@ export default function PersonalDetails() {
         console.log(ID);
         setUpdateId(ID);
         handleShow();
+          
+        axios.get(`http://20.204.78.15:8080/sqlartifact/update/${flatNumber}?userName=${userName}&firstName=${firstName}&lastName=${lastName}&userPassword=${userPassword}&emailId=${emailId}&memberCount=${memberCount}&membershipJoin=${membershipJoin}&membershipEnd=${membershipEnd}`)
+        .then((response)=>{
+            console.log(response.data);
+            window.location.reload();
+            handleClose();
+            setUpdateData(Math.random());
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
         
 
     }
@@ -120,7 +141,7 @@ export default function PersonalDetails() {
     return (
 
       <div style={{marginTop: '0.01%'}}>
-        {/* <IdleTimerContainer></IdleTimerContainer> */}
+        <IdleTimerContainer></IdleTimerContainer> 
        
      <div style={{marginTop: '2%'}}></div>
     <Button className="float-right" style={{marginTop: "3.5%"}} variant="primary" onClick={() => { setAddShow(true) }}>Add</Button>
@@ -159,6 +180,7 @@ export default function PersonalDetails() {
 </Table>
 <Modal
         show={show}
+        className="mt-5"
         onHide={handleClose}
         backdrop="static"
         keyboard={false}

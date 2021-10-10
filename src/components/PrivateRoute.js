@@ -207,7 +207,7 @@ export default function PrivateRoute({ component: Component, name, ...rest }) {
                                         
                                         
                                         
-                                        <ListItem onclick={handlelogout} button key='logout'>
+                                        <ListItem onClick={handlelogout} button key='logout'>
                                             <ListItemIcon>
                                                 <LogoutIcon />
                                             </ListItemIcon>
