@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Table } from 'react-bootstrap';
-// import axios from 'axios';
+import { Table} from 'react-bootstrap';
+import axios from 'axios';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import IdleTimerContainer from '../IdealTime';
 
@@ -11,37 +11,44 @@ export default function Defaulter(props) {
     const [lname, setLname] = useState([]);
     const [amount, setAmount] = useState([]);
     const [monthPending, setMonthPending] = useState([]);
-    const [id, setId] = useState([]);
+    const [ID, setId] = useState([]);
     const [show, setShow] = useState(false);
     const [updateId, setUpdateId] = useState();
+    const [data, setData] = useState([]);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    // useEffect(() => {
+    useEffect(() => {
 
+        
+         axios.get('http://20.204.87.58:8080/sqlartifact/def')
+         .then((response) => {
+            console.log(response.data)
+            console.log(response.data.records)
+            const x=JSON.parse(response.data.records)
+            setData(x)
+            console.log(x)
+            }) 
+            .catch((error) => {
+              console.log(error);
+            });
+    }, [])
 
-    //      axios.get('http://20.204.78.15:8080/sqlartifact/def/all')
-    //     .then((response) => {
-    //         console.log(response)
-    //        const responseJSON = JSON.parse(response.data.Defaultors)
-    //         // setId(JSON.parse(response.data.id));
-    //         // setName(JSON.parse(response.data.name));
-    //         console.log(response)
-    //         console.log(responseJSON);
-    //         responseJSON.forEach((e,index) => {
-    //             setId( [  ...id,  e[0] ] )
-    //             setFname([  ...fname,  e[1] ] )        
-    //             setLname([  ...lname,  e[2] ] )        
-    //             setAmount([  ...amount,  e[3] ] )        
-    //             setMonthPending([  ...monthPending,  e[4] ] )        
-    //  })
-    //       })
-    //       .catch((error) => {
-    //         console.log(error);
-    //       });
-    // }, [])
-
-
+    const DisplayData=data.map(
+        
+        (info)=>{
+            return(
+                <tr key={ID}>
+                    <td>{info.flatNumber}</td>
+                    <td>{info.firstName}</td>
+                    <td>{info.lastName}</td>
+                    <td>{info.months}</td>
+                    <td>{info.amount}</td>
+  
+                </tr>
+            )
+        }
+    )
     return (
         <div style={{ marginTop: '0.01%' }}>
             <IdleTimerContainer></IdleTimerContainer>
@@ -49,15 +56,15 @@ export default function Defaulter(props) {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>UserId</th>
+                        <th>Flat Number</th>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Amount</th>
                         <th>Months Pending</th>
+                        <th>Amount</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {id && id.map((ID, index) => (
+                    {/* {id && id.map((ID, index) => (
                         <tr key={ID}>
                             <td>{index + 1}</td>
                             <td>{fname[index]}</td>
@@ -66,7 +73,8 @@ export default function Defaulter(props) {
                             <td>{monthPending[index]}</td>
                         </tr>
 
-                    ))}
+                    ))} */}
+                    {DisplayData}
                 </tbody>
             </Table>
         </div>

@@ -1,57 +1,86 @@
 import React, { useState } from 'react'
 import { Modal, Form, Button, Toast } from 'react-bootstrap'
 import axios from 'axios';
-import IdleTimerContainer from './IdealTimer'
+import PasswordStrengthMeter from '../components/PasswordStrengthMeter'; 
+// import IdleTimerContainer from '../'
 
 export default function AddUser(props) {
     const handleClose = () => props.setAddShow(false);
     const handleShow = () => props.setAddShow(true);
     const [show, setShow] = useState(false);
-    const [username, setUsername] = useState()
-    const [fname, setFname] = useState()
-    const [lname, setLname] = useState()
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
-    // const [dop, setDop] = useState()
-    //const [subject3, setSubject3] = useState()
-    const handleOnChangeUsername = (e) => {
+    const [userName, setUserName] = useState()
+    const [firstName, setFirstName] = useState()
+    const [flatNumber, setFlatNumber] = useState()
+    const [lastName, setLastName] = useState()
+    const [emailId, setEmailId] = useState()
+    const [userPassword, setUserPassword] = useState()
+    const [userRole, setUserRole] = useState()
+    const [memberCount, setMemberCount] = useState()
+    const [membershipJoin, setMembershipJoin] = useState()
+    const [membershipEnd, setMembershipEnd] = useState()
+    const handleOnChangeUserName = (e) =>{
         e.preventDefault();
-        setUsername(e.target.value)
+        setUserName(e.target.value)
     }
-    const handleOnChangeFname = (e) => {
+    const handleOnChangeFirstName = (e) =>{
         e.preventDefault();
-        setFname(e.target.value)
+        setFirstName(e.target.value)
     }
-    const handleOnChangeLname = (e) => {
+    const handleOnChangeLastName = (e) =>{
         e.preventDefault();
-        setLname(e.target.value)
+        setLastName(e.target.value)
     }
-    const handleOnChangeEmail = (e) => {
+    const handleOnChangeFlatNumber= (e) =>{
         e.preventDefault();
-        setEmail(e.target.value)
+        setFlatNumber(e.target.value)
     }
-    const handleOnChangePassword = (e) => {
+    const handleOnChangeEmailId = (e) =>{
         e.preventDefault();
-        setPassword(e.target.value)
+        setEmailId(e.target.value)
+    }
+    const handleOnChangeUserPassword = (e) =>{
+        e.preventDefault();
+        setUserPassword(e.target.value)
+    }
+    const handleOnChangeUserRole = (e) =>{
+        e.preventDefault();
+        setUserRole(e.target.value)
+    }
+    const handleOnChangeMembershipEnd = (e) =>{
+        e.preventDefault();
+        setMembershipEnd(e.target.value)
+    }
+    const handleOnChangeMemberCount = (e) =>{
+        e.preventDefault();
+        setMemberCount(e.target.value)
+    }
+    const handleOnChangeMembershipJoin = (e) =>{
+        e.preventDefault();
+        setMembershipJoin(e.target.value)
     }
 
     const addUser = (e) => {
         e.preventDefault();
-        axios.get(`http://20.204.78.15:8080/sqlartifact/add?uname=${username}&fname=${fname}&lname=${lname}&password=${password}&email=${email}`)
-            .then(res => {
-                setShow(true)
-                console.log(res.data)
+        axios.get(`http://20.204.87.58:8080/sqlartifact/add?userName=${encodeURIComponent(userName)}&firstName=${firstName}&lastName=${lastName}&flatNumber=${flatNumber}&userPassword=${encodeURIComponent(userPassword)}&emailId=${emailId}&userRole=${userRole}&memberCount=${memberCount}&membershipJoin=${membershipJoin}&membershipEnd=${membershipEnd}`)
+        .then(res =>
+            {
+                if(res && res.data && res.data.message !== "") {
+                    alert(res.data.message)
+                } else {
+                    setShow(true)
+                    console.log(res.data)
+                }
             })
-            .catch(err =>
-                console.log(err)
-
-            )
+        .catch(err =>
+             console.log(err)
+                     
+             )
         handleClose()
     }
     return (
 
         <div>
-            <IdleTimerContainer></IdleTimerContainer>
+             {/* <IdleTimerContainer></IdleTimerContainer> */}
             <Toast bg="success" onClose={() => setShow(false)} show={show} delay={3000} autohide>
                 <Toast.Header>
                     <strong className="me-auto">Success</strong>
@@ -60,49 +89,90 @@ export default function AddUser(props) {
                 <Toast.Body className="success">Data inserted successfully</Toast.Body>
             </Toast>
             {props.AddShow &&
-                <Modal show={props.AddShow} onHide={handleClose}>
+                <Modal show={props.AddShow} onHide={handleClose} className="mt-5">
                     <Modal.Header closeButton>
                         <Modal.Title>Add User</Modal.Title>
                     </Modal.Header>
 
                     <Form>
-                        <Modal.Body>
-                            <Form.Group className="mb-3" controlId="username">
-                                <Form.Label>Username </Form.Label>
-                                <Form.Control type="text" placeholder="Enter username " value={username} onChange={handleOnChangeUsername} />
-                                <Form.Text className="text-muted">
-
-                                </Form.Text>
+                <Modal.Body>
+                <Form.Group className="mb-3" controlId="userName">
+                            <Form.Label>Username </Form.Label>
+                            <Form.Control type="text" placeholder="Enter username " value={userName} onChange={handleOnChangeUserName} />
+                            <Form.Text className="text-muted">
+                               
+                            </Form.Text>
                             </Form.Group>
-                            <Form.Group className="mb-3" controlId="fname">
-                                <Form.Label>First Name</Form.Label>
-                                <Form.Control type="text" placeholder="Enter First Name" value={fname} onChange={handleOnChangeFname} />
-                                <Form.Text className="text-muted">
-
-                                </Form.Text>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="lname">
-                                <Form.Label>Last Name</Form.Label>
-                                <Form.Control type="text" placeholder="Enter Last Name" value={lname} onChange={handleOnChangeLname} />
-                                <Form.Text className="text-muted">
-
-                                </Form.Text>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="email">
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control type="text" placeholder="Enter Email" value={email} onChange={handleOnChangeEmail} />
-                                <Form.Text className="text-muted">
-
-                                </Form.Text>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="password">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" value={password} onChange={handleOnChangePassword} placeholder="Enter password" />
-                                <Form.Text className="text-muted">
-
-                                </Form.Text>
-                            </Form.Group>
-                        </Modal.Body>
+                        <Form.Group className="mb-3" controlId="firstName">
+                            <Form.Label>First Name</Form.Label>
+                            <Form.Control type="text" placeholder="Enter First Name" value={firstName} onChange={handleOnChangeFirstName} />
+                            <Form.Text className="text-muted">
+                               
+                            </Form.Text>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="lastName">
+                            <Form.Label>Last Name</Form.Label>
+                            <Form.Control type="text" placeholder="Enter Last Name" value={lastName} onChange={handleOnChangeLastName} />
+                            <Form.Text className="text-muted">
+                               
+                            </Form.Text>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="flatNumber">
+                            <Form.Label>Flat Number</Form.Label>
+                            <Form.Control type="number" placeholder="Enter Last Name" value={flatNumber} onChange={handleOnChangeFlatNumber} />
+                            <Form.Text className="text-muted">
+                               
+                            </Form.Text>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="emailId">
+                            <Form.Label>Email Id</Form.Label>
+                            <Form.Control type="text" placeholder="Enter Email" value={emailId} onChange={handleOnChangeEmailId} />
+                            <Form.Text className="text-muted">
+                               
+                            </Form.Text>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="userPassword">
+                            <Form.Label>Password</Form.Label>
+                            {/* <PasswordStrengthMeter password={ userPassword } /> */}
+                            <Form.Control type="password" value={userPassword} onChange={handleOnChangeUserPassword} placeholder="Enter password" />
+                            
+                            
+                            
+                            <Form.Text className="text-muted">
+                               
+                            </Form.Text>
+                            
+                                                        
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="userRole">
+                            <Form.Label>User role</Form.Label>
+                            <Form.Control type="text" value={userRole} onChange={handleOnChangeUserRole} placeholder="Enter role" />
+                            <Form.Text className="text-muted">
+                               
+                            </Form.Text>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="memberCount">
+                            <Form.Label>Member Count</Form.Label>
+                            <Form.Control type="number" value={memberCount} onChange={handleOnChangeMemberCount} placeholder="Enter Member Count" />
+                            <Form.Text className="text-muted">
+                               
+                            </Form.Text>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="membershipJoin">
+                            <Form.Label>Membership Join</Form.Label>
+                            <Form.Control type="date" value={membershipJoin} onChange={handleOnChangeMembershipJoin} placeholder="Enter Membership Join" />
+                            <Form.Text className="text-muted">
+                               
+                            </Form.Text>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="membershipEnd">
+                            <Form.Label>Membership End</Form.Label>
+                            <Form.Control type="date" value={membershipEnd} onChange={handleOnChangeMembershipEnd} placeholder="Enter Membership End" />
+                            <Form.Text className="text-muted">
+                               
+                            </Form.Text>
+                        </Form.Group>
+                </Modal.Body>
 
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleClose}>Close</Button>

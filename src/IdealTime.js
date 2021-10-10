@@ -17,7 +17,7 @@ function IdleTimerContainer() {
   const onIdle = () => {
     console.log('User is idle')
     setmodalIsOpen(true)
-    sessionTimeoutRef.current = setTimeout(LogOut, 100*1000)
+    sessionTimeoutRef.current = setTimeout(LogOut, 5*1000)
   }
   const Stay = () => {
     setmodalIsOpen(false)
@@ -37,18 +37,16 @@ function IdleTimerContainer() {
   }
   return (
     <>
-      {
-        isloggedIn ?
-          (<>
+      
+          <>
             <Modal isOpen={modalIsOpen}>
               <h2>You have been idle for a while!</h2>
               <Button onClick={LogOut}>LogOut</Button>
               <Button onClick={Stay}>Stay</Button>
             </Modal>
-            <IdleTimer ref={idleTimerRef} timeout={500 * 1000} onIdle={onIdle}>
+            <IdleTimer ref={idleTimerRef} timeout={5*1000} onIdle={onIdle}>
             </IdleTimer>
-          </>) : null
-      }
+          </>
 
 
     </>

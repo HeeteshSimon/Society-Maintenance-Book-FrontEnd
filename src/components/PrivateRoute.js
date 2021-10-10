@@ -91,6 +91,7 @@ export default function PrivateRoute({ component: Component, name, ...rest }) {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
+    const isAdmin = localStorage.getItem('role') === 'admin'
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -155,25 +156,18 @@ export default function PrivateRoute({ component: Component, name, ...rest }) {
                                     </DrawerHeader>
                                     <Divider />
                                     <List>
-                                        <ListItem component={Link} to="/Dashboard" button key='Dashboard'>
-                                            <ListItemIcon>
-                                                <DashboardCustomizeOutlinedIcon />
-                                            </ListItemIcon>
-                                            <ListItemText primary={"Dashboard"} />
-                                        </ListItem>
-                                        <ListItem component={Link} to="/UserDetails" button key='User Details'>
-                                            <ListItemIcon>
-                                                <VerifiedUserOutlinedIcon />
-                                            </ListItemIcon>
-                                            <ListItemText primary='User Details' />
-                                        </ListItem>
-                                        <ListItem component={Link} to="/Defaulter" button key='Defaulter'>
-                                            <ListItemIcon>
-                                                <RunningWithErrorsIcon />
-                                            </ListItemIcon>
-                                            <ListItemText primary='Defaulter' />
-                                        </ListItem>
-                                        <ListItem component={Link} to="/ExpenseRecords" button key='ExpenseRecords'>
+                                        {/* Add Common Links here */}
+
+                                        {/* END */}
+                                        {isAdmin ? (
+                                             <>
+                                               <ListItem component={Link} to="/Defaulter" button key='Defaulter'>
+                                                    <ListItemIcon>
+                                                        <RunningWithErrorsIcon />
+                                                    </ListItemIcon>
+                                                    <ListItemText primary='Defaulter' />
+                                                </ListItem>
+                                                <ListItem component={Link} to="/ExpenseRecords" button key='ExpenseRecords'>
                                             <ListItemIcon>
                                                 <TableViewIcon />
                                             </ListItemIcon>
@@ -185,22 +179,35 @@ export default function PrivateRoute({ component: Component, name, ...rest }) {
                                             </ListItemIcon>
                                             <ListItemText primary='Maintenance Records' />
                                         </ListItem>
-                                        <ListItem component={Link} to="/SocietyRecords" button key='SocietyRecords'>
-                                            <ListItemIcon>
-                                                <TableChartTwoToneIcon />
-                                            </ListItemIcon>
-                                            <ListItemText primary='Society Records' />
-                                        </ListItem>
+                                        
                                         <ListItem component={Link} to="/PersonalDetails" button key='PersonalDetails'>
                                             <ListItemIcon>
                                                 <PersonIcon />
                                             </ListItemIcon>
                                             <ListItemText primary='Personal Details' />
                                         </ListItem>
-                                        {/* <ListItem component={Link} to="/PersonalDetails" button key='PersonalDetails'>
-                                            <ListItemText primary='Personal Details' />
-                                        </ListItem> */}
-                                        <ListItem onclick={handlelogout} button key='PersonalDetails'>
+                                             </>
+                                        ) : (
+                                             <>
+                                               <ListItem component={Link} to="/UserDetails" button key='User Details'>
+                                                    <ListItemIcon>
+                                                        <VerifiedUserOutlinedIcon />
+                                                    </ListItemIcon>
+                                                    <ListItemText primary='User Details' />
+                                                </ListItem>
+                                                <ListItem component={Link} to="/SocietyRecords" button key='SocietyRecords'>
+                                            <ListItemIcon>
+                                                <TableChartTwoToneIcon />
+                                            </ListItemIcon>
+                                            <ListItemText primary='Society Records' />
+                                        </ListItem>
+                                             </>
+
+                                        )}
+                                        
+                                        
+                                        
+                                        <ListItem onClick={handlelogout} button key='logout'>
                                             <ListItemIcon>
                                                 <LogoutIcon />
                                             </ListItemIcon>

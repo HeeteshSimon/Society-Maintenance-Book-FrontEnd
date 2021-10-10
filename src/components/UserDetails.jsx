@@ -3,7 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Table, Button, Modal, Form, Alert } from 'react-bootstrap';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-// import IdleTimerContainer from './IdealTimer'
+import IdleTimerContainer from '../IdealTime';
 
 export default function UserDetails(props) {
   const loc = window.location;
@@ -40,7 +40,8 @@ export default function UserDetails(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   useEffect(() => {
-    axios.get('http://20.204.87.58:8080/sqlartifact/getRecords?flatNumber=102&type=monthly')
+    const flatNumber = localStorage.getItem('flatNumber')
+    axios.get(`http://20.204.87.58:8080/sqlartifact/getRecords?flatNumber=${flatNumber}&type=monthly`)
       .then((response) => {
         console.log(response.data)
         console.log(response.data.records)
@@ -52,7 +53,7 @@ export default function UserDetails(props) {
         console.log(error);
       });
 
-    axios.get('http://20.204.87.58:8080/sqlartifact/getRecords?flatNumber=102&type=yearly')
+    axios.get(`http://20.204.87.58:8080/sqlartifact/getRecords?flatNumber=${flatNumber}&type=yearly`)
       .then((response) => {
         console.log(response.data)
         console.log(response.data.records)
@@ -135,7 +136,7 @@ export default function UserDetails(props) {
 
   return (
     <div style={{ marginTop: '0.01%', padding: '20px' }}>
-      {/* <IdleTimerContainer></IdleTimerContainer> */}
+      <IdleTimerContainer></IdleTimerContainer>
       <Button variant="warning" style={{ marginRight:'7px'}} onClick={(e) => setModeMonthly(true)}>Monthly</Button>{" "}
       <Button variant="warning" onClick={(e) => setModeMonthly(false)}>Yearly</Button>{" "}
 
