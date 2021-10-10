@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { Redirect, Route } from 'react-router';
-import IdleTimerContainer from '../IdealTime';
+// import IdleTimerContainer from '../IdealTime';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -130,6 +130,11 @@ export default function PrivateRoute({ component: Component, name, ...rest }) {
                                     </DrawerHeader>
                                     <Divider />
                                     <List>
+                                        <Link to='/dashboard'>
+                                            <ListItem button key='Dashboard'>
+                                                <ListItemText primary='Dashboard' />
+                                            </ListItem>
+                                        </Link>
                                         <Link to='/userdetails'>
                                             <ListItem button key='User Details'>
                                                 <ListItemText primary='User Details' />
@@ -140,9 +145,24 @@ export default function PrivateRoute({ component: Component, name, ...rest }) {
                                                 <ListItemText primary='Defaulter' />
                                             </ListItem>
                                         </Link>
-                                        <Link to='/dashboard'>
-                                            <ListItem button key='Dashboard'>
-                                                <ListItemText primary='Dashboard' />
+                                        <Link to='/ExpenseRecords'>
+                                            <ListItem button key='ExpenseRecords'>
+                                                <ListItemText primary='ExpenseRecords' />
+                                            </ListItem>
+                                        </Link>
+                                        <Link to='/MaintenanceRecords'>
+                                            <ListItem button key='MaintenanceRecords'>
+                                                <ListItemText primary='MaintenanceRecords' />
+                                            </ListItem>
+                                        </Link>
+                                        <Link to='/SocietyRecords'>
+                                            <ListItem button key='SocietyRecords'>
+                                                <ListItemText primary='SocietyRecords' />
+                                            </ListItem>
+                                        </Link>
+                                        <Link to='/PersonalDetails'>
+                                            <ListItem button key='PersonalDetails'>
+                                                <ListItemText primary='PersonalDetails' />
                                             </ListItem>
                                         </Link>
                                     </List>

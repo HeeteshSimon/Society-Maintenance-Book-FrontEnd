@@ -1,10 +1,10 @@
 
-import axios from 'axios';
+// import axios from 'axios';
 import React, {useEffect, useState} from 'react'
 import { Table, Button, Modal, Form, Alert } from 'react-bootstrap';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import IdleTimerContainer from './IdealTimer';
-import AddRecords from './AddRecords'
+// import IdleTimerContainer from './IdealTimer';
+// import AddRecords from './AddRecords'
 
 export default function Records(props) {
   const loc = window.location;
@@ -33,33 +33,33 @@ export default function Records(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     useEffect(() => {
-        axios.get('http://20.204.78.15:8080/sqlartifact/getUserRecords')
-        .then((response) => {
-         console.log(response.data)
-            setId(JSON.parse(response.data.id));
-            setFname(JSON.parse(response.data.fname))
-           setLname(JSON.parse(response.data.lname))
-           setAmount(JSON.parse(response.data.amount))
-           setDop(JSON.parse(response.data.date))
+        // axios.get('http://20.204.78.15:8080/sqlartifact/getUserRecords')
+        // .then((response) => {
+        //  console.log(response.data)
+        //     setId(JSON.parse(response.data.id));
+        //     setFname(JSON.parse(response.data.fname))
+        //    setLname(JSON.parse(response.data.lname))
+        //    setAmount(JSON.parse(response.data.amount))
+        //    setDop(JSON.parse(response.data.date))
         
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        //   })
+        //   .catch((error) => {
+        //     console.log(error);
+        //   });
     },[])
 
     const deleteById = (e, ID) =>{
         e.preventDefault();
         console.log(ID);
-        axios.get("http://20.204.78.15:8080/sqlartifact/deleteUserRecord?rid="+ID)
-        .then((response)=>{
-            console.log(response.data);
-            window.location.reload();
-            setUpdateData(Math.random());
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
+        // axios.get("http://20.204.78.15:8080/sqlartifact/deleteUserRecord?rid="+ID)
+        // .then((response)=>{
+        //     console.log(response.data);
+        //     window.location.reload();
+        //     setUpdateData(Math.random());
+        // })
+        // .catch((err)=>{
+        //     console.log(err);
+        // })
     }
     const upDatebyId = async (e, ID) =>{
         e.preventDefault();
@@ -83,20 +83,20 @@ export default function Records(props) {
         e.preventDefault();
         console.log(updateId);
        
-        axios.get(`http://20.204.78.15:8080/sqlartifact/updateUserRecord?rid=${updateId}&date=${updateDop}&amount=${updateAmount}`)
-        .then((response)=>{
-            console.log(response.data);
-            window.location.reload();
-            handleClose();
-            setUpdateData(Math.random());
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
+        // axios.get(`http://20.204.78.15:8080/sqlartifact/updateUserRecord?rid=${updateId}&date=${updateDop}&amount=${updateAmount}`)
+        // .then((response)=>{
+        //     console.log(response.data);
+        //     window.location.reload();
+        //     handleClose();
+        //     setUpdateData(Math.random());
+        // })
+        // .catch((err)=>{
+        //     console.log(err);
+        // })
     }
     return (
         <div style={{marginTop: '0.01%'}}>
-          <IdleTimerContainer></IdleTimerContainer>
+          {/* <IdleTimerContainer></IdleTimerContainer> */}
           <Navbar bg="dark" variant="dark">
 <Container>
 <Nav className="me-auto">
@@ -110,7 +110,7 @@ export default function Records(props) {
 </Container>
 </Navbar>
           <Button className="float-right" style={{marginTop: "3.5%"}} variant="primary" onClick={() => { setAddShow(true) }}>Add</Button>
-    <AddRecords AddShow={AddShow} setAddShow={setAddShow} />  
+    {/* <AddRecords AddShow={AddShow} setAddShow={setAddShow} />   */}
           <div style={{marginTop: '2%'}}></div>
             <Table striped bordered hover>
   <thead>

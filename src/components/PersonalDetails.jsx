@@ -1,12 +1,9 @@
-
-
-
 import React, {useEffect, useState} from 'react'
 import { Table, Button, Modal, Form, Alert } from 'react-bootstrap';
-import axios from 'axios';
-import AddUser from './AddUser';
+// import axios from 'axios';
+// import AddUser from './AddUser';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import IdleTimerContainer from './IdealTimer';
+// import IdleTimerContainer from './IdealTimer';
 
 export default function Pusers() {
   const loc = window.location;
@@ -34,20 +31,20 @@ export default function Pusers() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     useEffect(() => {
-        axios.get('http://20.204.78.15:8080/sqlartifact/get')
-         .then((response) => {
-           console.log(response.data)
+        // axios.get('http://20.204.78.15:8080/sqlartifact/get')
+        //  .then((response) => {
+        //    console.log(response.data)
 
-           setId(JSON.parse(response.data.userid));
-           setUsername(JSON.parse(response.data.username));
-           setFname(JSON.parse(response.data.firstname))
-           setLname(JSON.parse(response.data.lastname))
-           setEmail(JSON.parse(response.data.email))
+        //    setId(JSON.parse(response.data.userid));
+        //    setUsername(JSON.parse(response.data.username));
+        //    setFname(JSON.parse(response.data.firstname))
+        //    setLname(JSON.parse(response.data.lastname))
+        //    setEmail(JSON.parse(response.data.email))
           
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        //   })
+        //   .catch((error) => {
+        //     console.log(error);
+        //   });
     },[])
 
     const deleteById = (e, ID) =>{
@@ -88,7 +85,7 @@ export default function Pusers() {
     return (
 
       <div style={{marginTop: '0.01%'}}>
-        <IdleTimerContainer></IdleTimerContainer>
+        {/* <IdleTimerContainer></IdleTimerContainer> */}
         <Navbar bg="dark" variant="dark">
 <Container>
 <Nav className="me-auto">
@@ -103,7 +100,7 @@ export default function Pusers() {
 </Navbar>
      <div style={{marginTop: '2%'}}></div>
     <Button className="float-right" style={{marginTop: "3.5%"}} variant="primary" onClick={() => { setAddShow(true) }}>Add</Button>
-    <AddUser AddShow={AddShow} setAddShow={setAddShow} />  
+    {/* <AddUser AddShow={AddShow} setAddShow={setAddShow} />   */}
 <Table striped bordered hover>
   <thead>
     <tr>

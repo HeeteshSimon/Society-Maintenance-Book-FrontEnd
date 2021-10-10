@@ -1,10 +1,10 @@
 
-import axios from 'axios';
+// import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import { Table, Button, Modal, Form, Alert } from 'react-bootstrap';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import IdleTimerContainer from './IdealTimer'
-import AddAdminRecords from './AddAdminRecords';
+// import IdleTimerContainer from './IdealTimer'
+// import AddAdminRecords from './AddAdminRecords';
 
 export default function AdminRecords(props) {
   const loc = window.location;
@@ -40,27 +40,27 @@ export default function AdminRecords(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     useEffect(() => {
-        axios.get('http://20.204.78.15:8080/sqlartifact/getSocietyRecords')
-        .then((response) => {
-         console.log(response.data)
-           setExpType(JSON.parse(response.data.expense))
-           setAmount(JSON.parse(response.data.amount))
-           setDop(JSON.parse(response.data.date))
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        // axios.get('http://20.204.78.15:8080/sqlartifact/getSocietyRecords')
+        // .then((response) => {
+        //  console.log(response.data)
+        //    setExpType(JSON.parse(response.data.expense))
+        //    setAmount(JSON.parse(response.data.amount))
+        //    setDop(JSON.parse(response.data.date))
+        //   })
+        //   .catch((error) => {
+        //     console.log(error);
+        //   });
 
-          axios.get('http://20.204.78.15:8080/sqlartifact/getSocietyRecords?type=yearly')
-        .then((response) => {
-         console.log(response.data)
-           setExpYType(JSON.parse(response.data.expense))
-           setYearAmount(JSON.parse(response.data.amount))
-           setYear(JSON.parse(response.data.date))
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        //   axios.get('http://20.204.78.15:8080/sqlartifact/getSocietyRecords?type=yearly')
+        // .then((response) => {
+        //  console.log(response.data)
+        //    setExpYType(JSON.parse(response.data.expense))
+        //    setYearAmount(JSON.parse(response.data.amount))
+        //    setYear(JSON.parse(response.data.date))
+        //   })
+        //   .catch((error) => {
+        //     console.log(error);
+        //   });
     },[])
 
     const deleteById = (e, ID) =>{
@@ -123,7 +123,7 @@ export default function AdminRecords(props) {
     }
     return (
       <div style={{marginTop: '0.01%'}}>
-        <IdleTimerContainer></IdleTimerContainer>
+        {/* <IdleTimerContainer></IdleTimerContainer> */}
         <Navbar bg="dark" variant="dark">
 <Container>
 <Nav className="me-auto">
@@ -137,7 +137,7 @@ export default function AdminRecords(props) {
 </Container>
 </Navbar>
                 <Button className="float-right" style={{marginTop: "3.5%"}} variant="primary" onClick={() => { setAddShow(true) }}>Add</Button>
-    <AddAdminRecords AddShow={AddShow} setAddShow={setAddShow} />  
+    {/* <AddAdminRecords AddShow={AddShow} setAddShow={setAddShow} />   */}
           <Button variant="warning" onClick={(e)=>setModeMonthly(true)}>Monthly</Button>
           <Button variant="warning" onClick={(e)=>setModeMonthly(false)}>Yearly</Button>
       
