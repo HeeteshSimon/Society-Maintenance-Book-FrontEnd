@@ -1,11 +1,11 @@
 
-import axios from 'axios';
+// import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import { Table, Button, Modal, Form, Alert } from 'react-bootstrap';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import IdleTimerContainer from './IdealTimer'
+// import IdleTimerContainer from './IdealTimer'
 
-export default function Users(props) {
+export default function UserDetails(props) {
   const loc = window.location;
 
     const [userid, setUserid] = useState([]);
@@ -37,29 +37,29 @@ export default function Users(props) {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    useEffect(() => {
-        axios.get('http://20.204.78.15:8080/sqlartifact/getSocietyRecords')
-        .then((response) => {
-         console.log(response.data)
-           setExpType(JSON.parse(response.data.expense))
-           setAmount(JSON.parse(response.data.amount))
-           setDop(JSON.parse(response.data.date))
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+    // useEffect(() => {
+    //     axios.get('http://20.204.78.15:8080/sqlartifact/getSocietyRecords')
+    //     .then((response) => {
+    //      console.log(response.data)
+    //        setExpType(JSON.parse(response.data.expense))
+    //        setAmount(JSON.parse(response.data.amount))
+    //        setDop(JSON.parse(response.data.date))
+    //       })
+    //       .catch((error) => {
+    //         console.log(error);
+    //       });
 
-          axios.get('http://20.204.78.15:8080/sqlartifact/getSocietyRecords?type=yearly')
-        .then((response) => {
-         console.log(response.data)
-           setExpYType(JSON.parse(response.data.expense))
-           setYearAmount(JSON.parse(response.data.amount))
-           setYear(JSON.parse(response.data.date))
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-    },[])
+    //       axios.get('http://20.204.78.15:8080/sqlartifact/getSocietyRecords?type=yearly')
+    //     .then((response) => {
+    //      console.log(response.data)
+    //        setExpYType(JSON.parse(response.data.expense))
+    //        setYearAmount(JSON.parse(response.data.amount))
+    //        setYear(JSON.parse(response.data.date))
+    //       })
+    //       .catch((error) => {
+    //         console.log(error);
+    //       });
+    // },[])
 
     const deleteById = (e, ID) =>{
         e.preventDefault();
@@ -94,7 +94,7 @@ export default function Users(props) {
     }
     return (
       <div style={{marginTop: '0.01%'}}>
-        <IdleTimerContainer></IdleTimerContainer>
+        {/* <IdleTimerContainer></IdleTimerContainer> */}
         <Navbar bg="dark" variant="dark">
 <Container>
 <Nav className="me-auto">
