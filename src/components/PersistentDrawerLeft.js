@@ -95,6 +95,7 @@ export default function PersistentDrawerLeft() {
           <Typography variant="h6" noWrap component="div">
             Persistent Drawer
           </Typography>
+
         </Toolbar>
       </AppBar>
       <Drawer

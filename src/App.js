@@ -15,6 +15,7 @@ import ExpenseRecords from './components/ExpenseRecords';
 import MaintenanceRecords from './components/MaintenanceRecords';
 import SocietyRecords from './components/SocietyRecords';
 import PersonalDetails from './components/PersonalDetails';
+import PersistentDrawerLeft from './components/PersistentDrawer';
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Landing} />
           <Route path="/login" exact component={ValidatedLoginForm} />
-          <PrivateRoute path="/userdetails" exact component={UserDetails} name='User Details' />
+          <PrivateRoute path="/UserDetails" exact component={UserDetails} name='User Details' />
           <PrivateRoute path="/Defaulter" exact component={Defaulter} name='Defaulter' />
           <PrivateRoute path="/ExpenseRecords" exact component={ExpenseRecords} name='ExpenseRecords' />
           <PrivateRoute path="/MaintenanceRecords" exact component={MaintenanceRecords} name='MaintenanceRecords' />

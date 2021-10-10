@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router';
 import NavbarComponent from './Navbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 const Login_Page = () => {
 
     let history = useHistory();
