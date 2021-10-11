@@ -115,7 +115,7 @@ export default function MaintainanceRecords(props) {
 
     return (
         <div style={{marginTop: '0.01%'}}>
-          {/* <IdleTimerContainer></IdleTimerContainer> */}
+          <IdleTimerContainer></IdleTimerContainer>
           
           <Button className="float-right" style={{marginTop: "3.5%"}} variant="primary" onClick={() => { setAddShow(true) }}>Add</Button>
     <AddRecords AddShow={AddShow} setAddShow={setAddShow} />  

@@ -144,7 +144,7 @@ export default function PersonalDetails() {
         <IdleTimerContainer></IdleTimerContainer> 
        
      <div style={{marginTop: '2%'}}></div>
-    <Button className="float-right" style={{marginTop: "3.5%"}} variant="primary" onClick={() => { setAddShow(true) }}>Add</Button>
+    <Button className="float-right" style={{marginTop: "3.5%",marginBottom :"0.5%"}} variant="primary" onClick={() => { setAddShow(true) }}>Add</Button>
     <AddUser AddShow={AddShow} setAddShow={setAddShow} />  
 <Table striped bordered hover>
   <thead>

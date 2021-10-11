@@ -161,10 +161,10 @@ export default function ExpenseRecords(props) {
       <div style={{marginTop: '0.01%'}}>
         <IdleTimerContainer></IdleTimerContainer> 
      
-                <Button className="float-right" style={{marginTop: "3.5%"}} variant="primary" onClick={() => { setAddShow(true) }}>Add</Button>
+                <Button className="float-right" style={{marginTop: "3.5%",marginBottom :"0.5%"}} variant="primary" onClick={() => { setAddShow(true) }}>Add</Button>
     <AddAdminRecords AddShow={AddShow} setAddShow={setAddShow} />  
-          <Button variant="warning" onClick={(e)=>setModeMonthly(true)}>Monthly</Button>
-          <Button variant="warning" onClick={(e)=>setModeMonthly(false)}>Yearly</Button>
+          <Button className="float-right" variant="warning" style={{marginBottom :"2.5%"}} onClick={(e)=>setModeMonthly(true)}>Monthly</Button>{" "}
+          <Button className="float-right" variant="warning" style={{marginBottom : "2.5%"}} onClick={(e)=>setModeMonthly(false)}>Yearly</Button>
       
 
      { modeMonthly ? ( 

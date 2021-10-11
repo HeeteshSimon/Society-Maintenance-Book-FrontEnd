@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Modal, Form, Button, Toast } from 'react-bootstrap'
 import axios from 'axios';
 import PasswordStrengthMeter from '../components/PasswordStrengthMeter'; 
-// import IdleTimerContainer from '../'
+import IdleTimerContainer from '../IdealTime'
 
 export default function AddUser(props) {
     const handleClose = () => props.setAddShow(false);
@@ -80,7 +80,7 @@ export default function AddUser(props) {
     return (
 
         <div>
-             {/* <IdleTimerContainer></IdleTimerContainer> */}
+             <IdleTimerContainer></IdleTimerContainer>
             <Toast bg="success" onClose={() => setShow(false)} show={show} delay={3000} autohide>
                 <Toast.Header>
                     <strong className="me-auto">Success</strong>
