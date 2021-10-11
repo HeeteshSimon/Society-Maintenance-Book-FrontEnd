@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Modal, Form, Button, Toast } from 'react-bootstrap'
 import axios from 'axios';
-// import IdleTimerContainer from './IdealTimer';
+import IdleTimerContainer from '../IdealTimer';
 
 export default function AddRecords(props) {
     const handleClose = () => props.setAddShow(false);
@@ -50,9 +50,8 @@ export default function AddRecords(props) {
         handleClose()
     }
     return (
-
         <div>
-            {/* <IdleTimerContainer></IdleTimerContainer> */}
+            <IdleTimerContainer></IdleTimerContainer>
             <Toast bg="success" onClose={() => setShow(false)} show={show} delay={3000} autohide>
                 <Toast.Header>
                     <strong className="me-auto">Success</strong>
