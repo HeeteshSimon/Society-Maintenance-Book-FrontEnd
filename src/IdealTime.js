@@ -32,6 +32,7 @@ function IdleTimerContainer() {
     clearTimeout(sessionTimeoutRef.current)
     console.log('LogOut')
   }
+  {* Comment add kar raha hu *}
   if (loginStatus === null || loginStatus === false) {
     window.location.href = "/";
   }
